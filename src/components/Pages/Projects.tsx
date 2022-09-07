@@ -47,7 +47,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1.25rem;
-  max-height: 100vh;
+  max-height: var(--screen-height);
   overflow-y: auto;
   
   .icon {

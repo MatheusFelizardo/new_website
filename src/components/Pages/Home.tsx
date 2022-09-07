@@ -215,11 +215,11 @@ export default function Home() {
 const Container = styled.section`
   max-width: 1280px;
   width: 100%;
-  height: 100vh;
+  height: var(--screen-height);
   display: flex;
   flex-direction: column;
   padding: 1.25rem;
-  max-height: 100vh;
+  max-height: var(--screen-height);
   overflow-y: auto;
 
   .icon {

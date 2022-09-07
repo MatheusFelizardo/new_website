@@ -131,7 +131,7 @@ const Main = ({ page = 0 }: {page: number}) => {
 export default Main
 
 const Container = styled.div`
-  height: 100vh;
+  height: var(--screen-height);
   width: 100vw;
   display: flex;
 
