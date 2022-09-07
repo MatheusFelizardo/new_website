@@ -8,6 +8,7 @@ import Projects from '../components/Pages/Projects'
 import { Spin } from 'antd';
 import { LoadingOutlined, UserOutlined, FileOutlined, SettingOutlined, CodeOutlined } from '@ant-design/icons';
 import useLanguage from '../hooks/useLanguage'
+import useMobileDetect from '../hooks/useMobileDetect'
 
 const { Sider, Content } = Layout;
 
@@ -17,10 +18,13 @@ export interface PageProps {
 }
 
 const Main = ({ page = 0 }: {page: number}) => {
+  const isMobile = useMobileDetect()
+
   const { language, translate, setLanguage } = useLanguage()
   const [currentKey, setCurrentKey] = useState('1')
   const [loading, setLoading] = useState(false)
   const [collapsed, setCollapsed] = useState(false);
+
   const items = [
     {label: translate('About me'), key: '1', icon: <UserOutlined />}, 
     {label: translate('Projects'), key: '2', icon: <CodeOutlined /> },
@@ -67,6 +71,12 @@ const Main = ({ page = 0 }: {page: number}) => {
   }
 
   useEffect(()=> {
+    if (isMobile) {
+      setCollapsed(true)
+    }
+  }, [isMobile])
+
+  useEffect(()=> {
     const time = setTimeout(() => {
       setLoading(false)
     }, 500)
@@ -76,6 +86,8 @@ const Main = ({ page = 0 }: {page: number}) => {
     }
 
   }, [showPage, language, loading])
+
+
 
   return (
     <Container>
@@ -96,6 +108,7 @@ const Main = ({ page = 0 }: {page: number}) => {
             items={items}
             onSelect={changePage}
             selectedKeys={[currentKey]}
+            triggerSubMenuAction={isMobile ? 'click' : 'hover'}
           />
         </Sider>
         <Layout>

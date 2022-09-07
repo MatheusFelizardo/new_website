@@ -108,7 +108,11 @@ main {
             }
         }
     }
+   
+}
 
-    
-    
+.ant-tooltip {
+    @media (max-width: 500px) {
+        display: none !important;
+    }
 }
