@@ -135,6 +135,9 @@ const Container = styled.div`
   width: 100vw;
   display: flex;
 
+  aside {
+    max-height: var(--screen-height);
+  }
   @media (max-width: 450px) {
     aside {
       flex: 0 0 140px !important;
