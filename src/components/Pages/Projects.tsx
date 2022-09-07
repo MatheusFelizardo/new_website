@@ -82,16 +82,18 @@ const ProjectsContainer = styled.div`
 
 `
 const Overlay = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background: linear-gradient(115deg, rgba(255,255,255,0) 80%, rgba(0, 17, 255, .3) 100%);
-  opacity: 0;
-  animation: fade .6s linear forwards;
-
+  @media (min-width: 1024px) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, rgba(255,255,255,0) 80%, rgba(0, 17, 255, .3) 100%);
+    opacity: 0;
+    animation: fade .6s linear forwards;
+  }
+ 
   @keyframes fade {
     100% { opacity: 1;}
   }

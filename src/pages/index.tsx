@@ -121,6 +121,30 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
+
+  @media (max-width: 450px) {
+    aside {
+      flex: 0 0 140px !important;
+      max-width: 140px !important;
+      min-width: 140px !important;
+      width: 140px !important;
+    
+      .ant-layout-sider-trigger {
+        width: 135px !important;
+      }
+    }
+
+    aside.ant-layout-sider-collapsed {
+      flex: 0 0 40px !important;
+      max-width: 40px !important;
+      min-width: 40px !important;
+      width: 40px !important;
+    
+      .ant-layout-sider-trigger {
+        width: 40px !important;
+      }
+    }
+  }
   
 `
 
