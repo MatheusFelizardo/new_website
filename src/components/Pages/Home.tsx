@@ -205,7 +205,7 @@ export default function Home() {
       
       </Box>
 
-     <Overlay />
+      <Overlay />
     </Container>
     </>
   )
@@ -221,6 +221,9 @@ const Container = styled.section`
   padding: 1.25rem;
   max-height: var(--screen-height);
   overflow-y: auto;
+  opacity: 0;
+  animation: fade 1s linear forwards;
+  
 
   .icon {
     svg {
@@ -250,7 +253,8 @@ const Overlay = styled.div`
     pointer-events: none;
     background: linear-gradient(115deg, rgba(255,255,255,0) 80%, rgba(0, 17, 255, .3) 100%);
     opacity: 0;
-    animation: fade .6s linear forwards;
+    animation: fade 1s linear forwards;
+    animation-delay: .2s;
   }
  
   @keyframes fade {
@@ -269,7 +273,7 @@ const Wrapper = styled.section`
 `
 
 const Box = styled.div`
-
+  a
   .title {
     color: ${blue.primary};
     font-size: 3rem;

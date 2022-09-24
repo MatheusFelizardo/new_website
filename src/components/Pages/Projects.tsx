@@ -49,6 +49,8 @@ const Container = styled.section`
   padding: 1.25rem;
   max-height: var(--screen-height);
   overflow-y: auto;
+  opacity: 0;
+  animation: fade 1s linear forwards;
   
   .icon {
     svg {
@@ -67,6 +69,8 @@ const Container = styled.section`
 `
 
 const ProjectsContainer = styled.div`
+  
+
   display: grid;
   gap: 20px;
   align-items: center;
@@ -89,9 +93,9 @@ const Overlay = styled.div`
     top: 0;
     left: 0;
     pointer-events: none;
-    background: linear-gradient(115deg, rgba(255,255,255,0) 80%, rgba(0, 17, 255, .3) 100%);
+    background: linear-gradient(115deg, rgba(255,255,255,0) 80%, rgba(0, 204, 132, 0.4) 100%);
     opacity: 0;
-    animation: fade .6s linear forwards;
+    animation: fade 1s linear forwards;
   }
  
   @keyframes fade {

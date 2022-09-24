@@ -1,6 +1,7 @@
 export const translations = {
   "Projects": "Projetos",
   "About me": "Sobre mim",
+  "Components": "Componentes",
   "Resume": "Currículo",
   "Language": "Idioma",
   "Portuguese": "Português",
@@ -50,6 +51,11 @@ export const translations = {
   "See in the Github": "Ver no Github",
   "Click in the images to get informations about the project": "Clique na imagem para verificar informações do projeto",
   "In English": "Em Inglês",
-  "In Portuguese": "Em Português"
+  "In Portuguese": "Em Português",
+  "This page contains some components created with React and CSS to study": "Esta página contém alguns componentes criados com React e CSS para estudo",
+  "Back": "Voltar",
+  "Close": "Fechar",
+  "A custom loading created with CSS and HTML (JSX) only": "Um loading criado apenas com CSS e HTML(JSX)",
+  "A navigation menu created with CSS, HTML and Javascript to practice animations. Click in the icons to navigate.": "Um menu de navegação criado com CSS, HTML e Javascript para praticar animações. Clique nos ícones para navegar."
  
 }

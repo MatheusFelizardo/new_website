@@ -6,9 +6,10 @@ import { useRouter } from 'next/router'
 import { Tabs, Menu, Layout, notification } from 'antd';
 import Projects from '../components/Pages/Projects'
 import { Spin } from 'antd';
-import { LoadingOutlined, UserOutlined, FileOutlined, SettingOutlined, CodeOutlined } from '@ant-design/icons';
+import { LoadingOutlined, UserOutlined, FileOutlined, SettingOutlined, CodeOutlined, QrcodeOutlined } from '@ant-design/icons';
 import useLanguage from '../hooks/useLanguage'
 import useMobileDetect from '../hooks/useMobileDetect'
+import Components from '../components/Pages/Components'
 
 const { Sider, Content } = Layout;
 
@@ -28,6 +29,7 @@ const Main = ({ page = 0 }: {page: number}) => {
   const items = [
     {label: translate('About me'), key: '1', icon: <UserOutlined />}, 
     {label: translate('Projects'), key: '2', icon: <CodeOutlined /> },
+    {label: translate('Components'), key: '9', icon: <QrcodeOutlined /> },
     {label: translate('Resume'), key: '6', icon: <FileOutlined />, children: [
       {label: <a download href="/documents/matheus-resume-en.pdf">{translate('In English')}</a>, key: '7'}, 
       {label: <a download href="/documents/matheus-curriculum-ptBr.pdf">{translate('In Portuguese')}</a>, key: '8'}] },
@@ -39,7 +41,8 @@ const Main = ({ page = 0 }: {page: number}) => {
 
   const pages = {
     1: < Home/>,
-    2: <Projects />
+    2: <Projects />,
+    9: <Components />
   }
 
 
@@ -115,7 +118,7 @@ const Main = ({ page = 0 }: {page: number}) => {
           <Content>
             {loading ? 
                 <Loading>
-                  <Spin indicator={<LoadingOutlined />} />
+                 <Spin indicator={<LoadingOutlined />} />
                 </Loading>
                 :
                 pages[showPage]
@@ -134,7 +137,7 @@ const Container = styled.div`
   height: var(--screen-height);
   width: 100vw;
   display: flex;
-
+  
   aside {
     max-height: var(--screen-height);
   }
@@ -166,6 +169,7 @@ const Container = styled.div`
 
 const Loading = styled.div`
   width: 100%;
+  max-width: 1280px;
   height: 100%;
   display: flex;
   justify-content: center;

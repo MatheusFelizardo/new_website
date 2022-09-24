@@ -96,13 +96,14 @@ const ProjectItem = ({project}: Project) => {
 export default ProjectItem
 
 const StyledDrawer = styled(Drawer)`
+
   .ant-drawer-content-wrapper {
     width: 100vw !important;  
   }
 
   .ant-drawer-content {
     background: rgb(24,144,255);
-    background: linear-gradient(174deg, rgba(24,144,255,1) 0%, rgba(6,40,199,1) 100%);
+    background-image: radial-gradient( circle farthest-corner at -4% -12.9%,  #354248 0.3%, rgba(30,33,48,1) 90.2% );
   }
 
   .ant-drawer-header-title {
@@ -253,6 +254,12 @@ const StyledDrawer = styled(Drawer)`
 `
 
 const ImageCard = styled.div`
+
+  animation: fade 1s linear;
+  @keyframes fade {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+  }
   cursor: pointer;
   box-shadow: 0 0 10px 0px white;
 
