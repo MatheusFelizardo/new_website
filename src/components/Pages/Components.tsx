@@ -9,7 +9,7 @@ import CircularNavigation from '../Menus/CircularNavigation';
 interface ComponentProps {
   title: string
   description: string
-  url: string
+  path: string
   element: JSX.Element
 }
 
@@ -29,19 +29,19 @@ const Components = () => {
   const { translate, language } = useLanguage()
   const [visible, setVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<ComponentProps>(null);
-
+  const github_components_folder_url = `https://github.com/MatheusFelizardo/my-components/blob/main`
   const components = [
     {
       title: 'Loading', 
       description: translate('A custom loading created with CSS and HTML (JSX) only'), 
       element: <Loading />,
-      url: 'https://github.com/MatheusFelizardo/new_website/tree/master/src/components/Loading/Loading.tsx'
+      path: `Loading/Loading.tsx`
     },
     {
       title: 'Circular Navigation Menu', 
       description: translate('A navigation menu created with CSS, HTML and Javascript to practice animations. Click in the icons to navigate.'), 
       element: <CircularNavigation />,
-      url: 'https://github.com/MatheusFelizardo/new_website/tree/master/src/components/Menus/CircularNavigation/index.tsx'
+      path: `Menus/CircularNavigation/index.tsx`
     }
   ]
 
@@ -75,9 +75,8 @@ const Components = () => {
           <p>{selectedComponent.description}</p>
           {selectedComponent.element}
           <div className="link">
-            <a target="_blank" href={selectedComponent.url}>
+            <a target="_blank" href={`${github_components_folder_url}/${selectedComponent.path}`}>
               {translate("See in the Github")}
-              {/* <GithubOutlined style={{ fontSize: '30px', color: '#1890ff' }} /> */}
               <Cat />
             </a>       
           </div>
@@ -100,7 +99,7 @@ const Container = styled.section`
   overflow-y: auto;
   opacity: 0;
   animation: fade 1s linear forwards;
-  
+
   h2 {
     font-size: 1.125rem;
     animation: fade 1s linear;
