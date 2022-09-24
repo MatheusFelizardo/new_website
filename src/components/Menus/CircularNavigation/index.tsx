@@ -16,42 +16,42 @@ const CircularNavigation = () => {
         <PlusOutlined />
       </div>
 
-      <li style={{"--i":0}}>
+      <li style={{["--i" as any]:0}}>
         <a href="/" target="_blank">
           <HomeOutlined />
         </a>
       </li>
-      <li style={{"--i":1}}>
+      <li style={{["--i" as any]:1}}>
         <a href="https://linktr.ee/matheusfelizardo" target="_blank">
           <UserOutlined />
         </a>
       </li>
-      <li style={{"--i":2}}>
+      <li style={{["--i" as any]:2}}>
         <a href="https://github.com/MatheusFelizardo" target="_blank" >
           <GithubOutlined />
         </a>
       </li>
-      <li style={{"--i":3}}>
+      <li style={{["--i" as any]:3}}>
         <a href="https://twitter.com/theusfelizardo1" target="_blank" >
           <TwitterOutlined />
         </a>
       </li>
-      <li style={{"--i":4}}>
+      <li style={{["--i" as any]:4}}>
         <a href="https://www.instagram.com/matheus.felizardo_/" target="_blank">
         <InstagramOutlined />
         </a>
       </li>
-      <li style={{"--i":5}}>
+      <li style={{["--i" as any]:5}}>
         <a href="https://www.facebook.com/matheus.felizardo.3/" target="_blank">
           <FacebookOutlined />
         </a>
       </li>
-      <li style={{"--i":6}}>
+      <li style={{["--i" as any]:6}}>
         <a href="https://www.linkedin.com/in/matheus-felizardo" target="_blank">
           <LinkedinOutlined />
         </a>
       </li>
-      <li style={{"--i":7}}>
+      <li style={{["--i" as any]:7}}>
         <a href="#" onClick={handleClick}>
           <PoweroffOutlined />
         </a>

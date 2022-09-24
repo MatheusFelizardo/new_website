@@ -4,26 +4,26 @@ import styled from 'styled-components'
 const Loading = ({...props}) => {
   return (
       <Wrapper>
-        <Blocks style={{"--i": 1}} ></Blocks>
-        <Blocks style={{"--i": 2}}></Blocks>
-        <Blocks style={{"--i": 3}}></Blocks>
-        <Blocks style={{"--i": 4}}></Blocks>
-        <Blocks style={{"--i": 5}}></Blocks>
-        <Blocks style={{"--i": 6}}></Blocks>
-        <Blocks style={{"--i": 7}}></Blocks>
-        <Blocks style={{"--i": 8}}></Blocks>
-        <Blocks style={{"--i": 9}}></Blocks>
-        <Blocks style={{"--i": 10}}></Blocks>
-        <Blocks style={{"--i": 11}}></Blocks>
-        <Blocks style={{"--i": 12}}></Blocks>
-        <Blocks style={{"--i": 13}}></Blocks>
-        <Blocks style={{"--i": 14}}></Blocks>
-        <Blocks style={{"--i": 15}}></Blocks>
-        <Blocks style={{"--i": 16}}></Blocks>
-        <Blocks style={{"--i": 17}}></Blocks>
-        <Blocks style={{"--i": 18}}></Blocks>
-        <Blocks style={{"--i": 19}}></Blocks>
-        <Blocks style={{"--i": 20}}></Blocks>
+        <Blocks style={{["--i" as any]: 1}} ></Blocks>
+        <Blocks style={{["--i" as any]: 2}}></Blocks>
+        <Blocks style={{["--i" as any]: 3}}></Blocks>
+        <Blocks style={{["--i" as any]: 4}}></Blocks>
+        <Blocks style={{["--i" as any]: 5}}></Blocks>
+        <Blocks style={{["--i" as any]: 6}}></Blocks>
+        <Blocks style={{["--i" as any]: 7}}></Blocks>
+        <Blocks style={{["--i" as any]: 8}}></Blocks>
+        <Blocks style={{["--i" as any]: 9}}></Blocks>
+        <Blocks style={{["--i" as any]: 10}}></Blocks>
+        <Blocks style={{["--i" as any]: 11}}></Blocks>
+        <Blocks style={{["--i" as any]: 12}}></Blocks>
+        <Blocks style={{["--i" as any]: 13}}></Blocks>
+        <Blocks style={{["--i" as any]: 14}}></Blocks>
+        <Blocks style={{["--i" as any]: 15}}></Blocks>
+        <Blocks style={{["--i" as any]: 16}}></Blocks>
+        <Blocks style={{["--i" as any]: 17}}></Blocks>
+        <Blocks style={{["--i" as any]: 18}}></Blocks>
+        <Blocks style={{["--i" as any]: 19}}></Blocks>
+        <Blocks style={{["--i" as any]: 20}}></Blocks>
         <Text>Loading</Text>
       </Wrapper>
   )
