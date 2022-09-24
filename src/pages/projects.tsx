@@ -1,27 +1,26 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Home from '../components/Pages/Home'
+import Projects from '../components/Pages/Projects'
 import useLanguage from '../hooks/useLanguage'
 import { PageProps } from './_app'
 
-
-const PageHome = ({ setSelectedKey }: PageProps) => {
+const PageProjects = ({ setSelectedKey }: PageProps ) => {
   const { language, translate, setLanguage } = useLanguage()
 
   useEffect(() => {
-    setSelectedKey('1')
+    setSelectedKey('2')
   }, [])
 
   return (
     <>
       <Head>
-          <title>{`${translate("Home")} | ${translate("Matheus Felizardo - Front-end developer")}`}</title>
+          <title>{`${translate("Projects")} | ${translate("Matheus Felizardo - Front-end developer")}`}</title>
       </Head>
     
-      < Home />
+      < Projects />
     </>
   )
 }
 
-export default PageHome
+export default PageProjects

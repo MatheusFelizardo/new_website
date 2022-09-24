@@ -62,10 +62,10 @@ const Blocks = styled.div`
     }
 
     50.1%, 100% {
-      background: #1890ff;
-      box-shadow: 0 0 5px #1890ff, 
-                  0 0 15px #1890ff, 
-                  0 0 30px #1890ff, 
+      background: var(--blue-500);
+      box-shadow: 0 0 5px var(--blue-500), 
+                  0 0 15px var(--blue-500), 
+                  0 0 30px var(--blue-500), 
     }
   }
 `
@@ -87,7 +87,7 @@ const Text = styled.h3`
     }
 
     50.1%, 100% {
-      color: #1890ff;
+      color: var(--blue-500);
     }
   }
 `

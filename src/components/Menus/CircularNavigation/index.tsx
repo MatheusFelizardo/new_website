@@ -79,7 +79,7 @@ const Container = styled.nav`
     font-size: 2rem;
     width: 60px;
     height: 60px;
-    background: #1890ff;
+    background: var(--blue-500);
     color: white;
     border-radius: 100%;
     display: flex;
@@ -91,7 +91,7 @@ const Container = styled.nav`
     position: absolute;
 
     &:hover {
-        box-shadow: 0 0 5px #1890ff;
+        box-shadow: 0 0 5px var(--blue-500);
       }
   }
 
@@ -111,7 +111,7 @@ const Container = styled.nav`
       width: 40px;
       height: 40px;
       border-radius: 100%;
-      background: #1890ff;
+      background: var(--blue-500);
       color: white;
       transform: rotate(calc(360deg / -8 * var(--i)));
 
@@ -121,7 +121,7 @@ const Container = styled.nav`
 
       &:hover {
         transform: rotate(calc(360deg / -8 * var(--i))) scale(1.05);
-        box-shadow: 0 0 5px #1890ff;
+        box-shadow: 0 0 5px var(--blue-500);
       }
     }
   }
