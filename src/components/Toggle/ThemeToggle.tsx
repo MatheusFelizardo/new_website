@@ -13,7 +13,7 @@ const ThemeToggle = () => {
       <Wrapper>
         {
           theme.name === 'light' ? 
-          <MdDarkMode onClick={toggleTheme} /> : 
+          <MdDarkMode style={{color: 'black'}} onClick={toggleTheme} /> : 
           <MdOutlineWbSunny style={{color: 'white'}} onClick={toggleTheme} />
         }
       </Wrapper>
