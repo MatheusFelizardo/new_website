@@ -9,7 +9,6 @@ import { LoadingOutlined } from '@ant-design/icons';
 import useLanguage from '../hooks/useLanguage'
 import MainMenu from '../components/Menus/MainMenu';
 import styled from 'styled-components';
-import ThemeToggle from '../components/Toggle/ThemeToggle';
 import { CustomThemeProvider } from '../contexts/ThemeContext';
 const { Content } = Layout;
 
@@ -86,10 +85,12 @@ const Container = styled.div`
   .ant-layout-sider-children {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
 
   .ant-layout-sider-collapsed {
+    .switcher-container {
+      justify-content: center;
+    }
     .switcher {
       display: none;
     }

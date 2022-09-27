@@ -10,7 +10,8 @@ import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { useTheme } from '../../../contexts/ThemeContext';
 import { SiderTheme } from 'antd/lib/layout/Sider';
-import ThemeToggle from '../../Toggle/ThemeToggle';
+import { MdOutlineWbSunny, MdDarkMode } from 'react-icons/md'
+import Icon from '@ant-design/icons';
 
 const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
   const isMobile = useMobileDetect()
@@ -18,7 +19,7 @@ const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
   const router = useRouter()
   const [collapsed, setCollapsed] = useState(false)
   const {theme, toggleTheme} = useTheme();
-
+  
   const updatedCurrent = ({key, item}) => {
     if (item.props.url) {
       setSelectedKey(key)
@@ -45,7 +46,13 @@ const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
     {label: <a download href="/documents/matheus-curriculum-ptBr.pdf">{translate('In Portuguese')}</a>, key: '8'}] },
     {label: translate('Language'), key: '3', icon:  <SettingOutlined />, children: [
     {label: <div onClick={()=> changeLanguage('en')}>{translate('English')}</div>, key: '4'}, 
-    {label: <div onClick={()=> changeLanguage('pt-Br')}>{translate('Portuguese')}</div>, key: '5'}] }
+    {label: <div onClick={()=> changeLanguage('pt-Br')}>{translate('Portuguese')}</div>, key: '5'}] },
+    {label: <span>{theme.name === 'light' ? translate('Light Mode') : translate('Dark Mode')}</span>, 
+    key: '10', 
+    icon: theme.name === 'light' ? <Icon component={MdDarkMode} style={{color: 'black'}} /> : 
+    <Icon component={MdOutlineWbSunny} style={{color: 'white'}} />, 
+    onClick: ()=> toggleTheme()
+    }
   ]
 
   useEffect(()=> {
@@ -71,7 +78,7 @@ const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
         triggerSubMenuAction={isMobile ? 'click' : 'hover'}
         selectedKeys={[selectedKey]}
       />
-      <ThemeToggle />
+      
 
     </Sider>
   )
