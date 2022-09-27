@@ -173,11 +173,11 @@ export default function Home() {
       <Wrapper>
         <Box>
           <Space direction="vertical" size={4}>
-            <Text>{translate("Hi, I'm")} </Text>
+            <CustomText>{translate("Hi, I'm")} </CustomText>
             <Title className='title' title="Matheus Felizardo">Matheus Felizardo.</Title>
-            <Text>{translate("I'm a front-end developer based in Rio de Janeiro, Brazil.")}</Text>
-            <Text>{translate("I'm")} {birthdate} {translate("years old and I'm a developer since October/2020.")}</Text>
-            <Text>{translate("Currently working at Envivent.")}</Text>
+            <CustomText>{translate("I'm a front-end developer based in Rio de Janeiro, Brazil.")}</CustomText>
+            <CustomText>{translate("I'm")} {birthdate} {translate("years old and I'm a developer since October/2020.")}</CustomText>
+            <CustomText>{translate("Currently working at Envivent.")}</CustomText>
           </Space>
         </Box>
 
@@ -273,7 +273,7 @@ const Wrapper = styled.section`
 `
 
 const Box = styled.div`
-  a
+
   .title {
     color: ${blue.primary};
     font-size: 3rem;
@@ -284,6 +284,10 @@ const Box = styled.div`
     height: 60%;
   }
 
+`
+
+const CustomText = styled(Text)`
+  color: ${props => props.theme.colors.text};
 `
 
 const Flex = styled.div`

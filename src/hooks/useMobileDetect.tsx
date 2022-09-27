@@ -6,18 +6,18 @@ const useMobileDetect = () => {
     useEffect(() => {
         const match = window.matchMedia('(max-width: 1023px)')
         setIsMobile(match && match.matches)
-        document.documentElement.style.setProperty('--screen-height', `${window.innerHeight - 1}px`);
+        document.documentElement.style.setProperty('--screen-height', `${window.innerHeight}px`);
 
         window.addEventListener('resize', () => {
             const match = window.matchMedia('(max-width: 1023px)')
-            document.documentElement.style.setProperty('--screen-height', `${window.innerHeight - 1}px`);
+            document.documentElement.style.setProperty('--screen-height', `${window.innerHeight}px`);
             setIsMobile(match && match.matches)
         })
 
         return ()=> {
             window.removeEventListener('resize', () => {
                 const match = window.matchMedia('(max-width: 1023px)')
-                document.documentElement.style.setProperty('--screen-height', `${window.innerHeight - 1}px`);
+                document.documentElement.style.setProperty('--screen-height', `${window.innerHeight}px`);
 
                 setIsMobile(match && match.matches)
             })

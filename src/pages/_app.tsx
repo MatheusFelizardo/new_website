@@ -9,6 +9,8 @@ import { LoadingOutlined } from '@ant-design/icons';
 import useLanguage from '../hooks/useLanguage'
 import MainMenu from '../components/Menus/MainMenu';
 import styled from 'styled-components';
+import ThemeToggle from '../components/Toggle/ThemeToggle';
+import { CustomThemeProvider } from '../contexts/ThemeContext';
 const { Content } = Layout;
 
 export interface PageProps {
@@ -44,8 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [language, loading])
 
   return (
-  <>
-  <Container>
+  <CustomThemeProvider>
+    <Container >
       <Layout>
         <MainMenu 
           setSelectedKey={setSelectedKey} 
@@ -53,7 +55,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           loading={loading} 
           setLoading={setLoading} 
         />
-        <Layout id="np-content">
+        <Layout id="np-content" >
           <Content>
             {loading ? 
                 <Loading>
@@ -69,7 +71,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
       </Layout>
     </Container>
-  </>
+  </CustomThemeProvider>
   )
 }
 
@@ -80,10 +82,37 @@ const Container = styled.div`
   height: var(--screen-height);
   width: 100vw;
   display: flex;
+
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ant-layout-sider-collapsed {
+    .switcher {
+      display: none;
+    }
+  }
   
   aside {
     max-height: var(--screen-height);
   }
+
+  #np-content {
+    background: ${props => props.theme.colors.background};
+  }
+
+  .ant-tabs-tab, .ant-typography, .ant-timeline-item, h2 {
+    color: ${props => props.theme.colors.text};
+  }
+
+  .ant-tabs-nav {
+    &:before {
+      border-bottom-color: ${props => props.theme.name === "light" && '#96c8f6'};
+    }
+  }
+  
   @media (max-width: 450px) {
     aside {
       flex: 0 0 140px !important;
