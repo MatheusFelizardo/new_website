@@ -275,8 +275,6 @@ const Wrapper = styled.section`
 const Box = styled.div`
 
   .title {
-    color: ${blue.primary};
-    font-size: 3rem;
     margin-bottom: 0;
   }
 
