@@ -123,3 +123,19 @@ main {
     0% { opacity: 0;}
     100% { opacity: 1;}
 }
+
+.menu-theme {
+    li.ant-menu-item {
+        padding: 0;
+        span {
+            padding: 0;
+            div {
+                padding: 0 16px;
+
+                &.active {
+                    background-color: var(--blue-500);
+                }
+            }
+        }
+    }
+}

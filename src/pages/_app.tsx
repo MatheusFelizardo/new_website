@@ -113,7 +113,7 @@ const Container = styled.div`
       border-bottom-color: ${props => props.theme.name === "light" && '#96c8f6'};
     }
   }
-  
+
   @media (max-width: 450px) {
     aside {
       flex: 0 0 140px !important;

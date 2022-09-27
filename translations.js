@@ -59,6 +59,7 @@ export const translations = {
   "A custom loading created with CSS and HTML (JSX) only": "Um loading criado apenas com CSS e HTML(JSX)",
   "A navigation menu created with CSS, HTML and Javascript to practice animations. Click in the icons to navigate.": "Um menu de navegação criado com CSS, HTML e Javascript para praticar animações. Clique nos ícones para navegar.",
   'Dark Mode': 'Modo Escuro',
-  'Light Mode': 'Modo Claro'
+  'Light Mode': 'Modo Claro',
+  "Theme": "Tema"
  
 }

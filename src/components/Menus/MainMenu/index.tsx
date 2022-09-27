@@ -36,7 +36,7 @@ const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
     setLoading(true)
     return
   }
-
+  
   const items = [
     {label: <Link href="/">{translate('About me')}</Link>, key: '1', icon: <UserOutlined /> }, 
     {label: <Link href="/projects">{translate('Projects')}</Link>, key: '2', icon: <CodeOutlined /> },
@@ -47,11 +47,13 @@ const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
     {label: translate('Language'), key: '3', icon:  <SettingOutlined />, children: [
     {label: <div onClick={()=> changeLanguage('en')}>{translate('English')}</div>, key: '4'}, 
     {label: <div onClick={()=> changeLanguage('pt-Br')}>{translate('Portuguese')}</div>, key: '5'}] },
-    {label: <span>{theme.name === 'light' ? translate('Light Mode') : translate('Dark Mode')}</span>, 
-    key: '10', 
-    icon: theme.name === 'light' ? <Icon component={MdDarkMode} style={{color: 'black'}} /> : 
-    <Icon component={MdOutlineWbSunny} style={{color: 'white'}} />, 
-    onClick: ()=> toggleTheme()
+    {label: translate('Theme'), popupClassName: 'menu-theme',
+    key: '10', icon: theme.name === 'light' ? <Icon component={MdOutlineWbSunny} style={{color: 'black'}} /> : 
+    <Icon component={MdDarkMode} style={{color: 'white'}} />, 
+    children: [
+      {label: <div onClick={()=> {toggleTheme('light')}} className={theme.name === 'light' && 'active'}>{translate('Light Mode')}</div>, key: '11'}, 
+      {label: <div onClick={()=> {toggleTheme('dark')}} className={theme.name === 'dark' && 'active'}>{translate('Dark Mode')}</div>, key: '12'}
+    ] 
     }
   ]
 

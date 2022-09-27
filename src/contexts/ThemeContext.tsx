@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext, useState, useEffect } fr
 import { ThemeProvider } from 'styled-components';
 
 interface ThemeContextData {
-  toggleTheme(): void;
+  toggleTheme(x?: string): void;
   theme: Theme;
 }
 
@@ -44,7 +44,18 @@ export const CustomThemeProvider: React.FC = ({ children }) => {
 
   const [theme, setTheme] = useState<Theme>(light);
 
-  const toggleTheme = useCallback(() => {
+  const toggleTheme = useCallback((selected: string) => {
+    if(selected) {
+      if (selected === 'dark'){
+        setTheme(dark);
+        localStorage.setItem('theme', 'dark')
+      } else {
+        localStorage.setItem('theme', 'light')
+        setTheme(light);
+      }
+      return
+    }
+
     if (theme.name === 'dark'){
       setTheme(light);
       localStorage.setItem('theme', 'light')
