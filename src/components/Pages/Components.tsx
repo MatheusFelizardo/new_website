@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import useLanguage from '../../hooks/useLanguage'
-import Loading from '../Loading/Loading'
 import { Button, Modal } from 'antd';
 import 'antd/dist/antd.css';
-import CircularNavigation from '../Menus/CircularNavigation';
+import { components } from './utils/components-list'
 
 interface ComponentProps {
   title: string
@@ -30,21 +29,7 @@ const Components = () => {
   const [visible, setVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<ComponentProps>(null);
   const github_components_folder_url = `https://github.com/MatheusFelizardo/my-components/blob/main`
-  const components = [
-    {
-      title: 'Loading', 
-      description: translate('A custom loading created with CSS and HTML (JSX) only'), 
-      element: <Loading />,
-      path: `Loading/Loading.tsx`
-    },
-    {
-      title: 'Circular Navigation Menu', 
-      description: translate('A navigation menu created with CSS, HTML and Javascript to practice animations. Click in the icons to navigate.'), 
-      element: <CircularNavigation />,
-      path: `Menus/CircularNavigation/index.tsx`
-    }
-  ]
-
+  
   const openModal = (component: ComponentProps) => {
     setSelectedComponent(component)
     setVisible(true)
@@ -56,13 +41,13 @@ const Components = () => {
 
       <Wrapper>
         {components.map((component, index) => (
-          <Button key={component.title + index} onClick={()=> openModal(component)} type="primary">{component.title}</Button>
+          <Button key={component.title + index} onClick={()=> openModal(component)} type="primary">{translate(component.title)}</Button>
         ))}
       </Wrapper>
 
       {selectedComponent && (
         <ComponentsModal
-          title={selectedComponent.title}
+          title={translate(selectedComponent.title)}
           centered
           visible={visible}
           onOk={() => setVisible(false)}
@@ -72,7 +57,7 @@ const Components = () => {
           footer={null}
           destroyOnClose={true}
         >
-          <p>{selectedComponent.description}</p>
+          <p>{translate(selectedComponent.description)}</p>
           {selectedComponent.element}
           <div className="link">
             <a target="_blank" href={`${github_components_folder_url}/${selectedComponent.path}`}>
@@ -124,6 +109,7 @@ const Container = styled.section`
 const Wrapper = styled.div`
   animation: fade 1s linear;
 
+  flex-wrap: wrap;
   display: flex;
   gap: 1rem;
   margin-top: 3rem;
@@ -141,7 +127,7 @@ const ComponentsModal = styled(Modal)`
 
   .ant-modal-body {
     padding-bottom: 2rem;
-    p {
+    > p {
       margin-bottom: 3rem;
     }
 
@@ -160,30 +146,29 @@ const ComponentsModal = styled(Modal)`
         height: 2px;
         background: var(--blue-500);
        }
+       &:hover {
+          svg { 
+            .head {
+              animation: head 1s;
+            }
+
+            .tail {
+              animation: tail 1s;
+            }
+          }
+
+          &:before {
+            width: 100%;
+          }
+        }
+
     }
 
     svg { 
       margin-left: 5px;
     }
 
-    &:hover {
-      svg { 
-        .head {
-          animation: head 1s;
-        }
-
-        .tail {
-          animation: tail 1s;
-        }
-      }
-
-      a {
-        &:before {
-          width: 100%;
-        }
-      }
-    }
-
+   
     @keyframes head {
       0% {
         transform: translateX(1px);

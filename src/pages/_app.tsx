@@ -17,12 +17,12 @@ export interface PageProps {
 }
 
 NProgress.configure({ parent: "#np-content", easing: 'ease', speed: 500 });
-Router.events.on('routeChangeStart', (url) => {
+Router?.events.on('routeChangeStart', (url) => {
   NProgress.start();
 })
 
-Router.events.on('routeChangeComplete', () => { NProgress.done(); })
-Router.events.on('routeChangeError', () => { NProgress.done(); })
+Router.events.on('routeChangeComplete', () => { NProgress?.done(); })
+Router.events.on('routeChangeError', () => { NProgress?.done(); })
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { language, translate, setLanguage } = useLanguage()

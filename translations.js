@@ -60,6 +60,12 @@ export const translations = {
   "A navigation menu created with CSS, HTML and Javascript to practice animations. Click in the icons to navigate.": "Um menu de navegação criado com CSS, HTML e Javascript para praticar animações. Clique nos ícones para navegar.",
   'Dark Mode': 'Modo Escuro',
   'Light Mode': 'Modo Claro',
-  "Theme": "Tema"
+  "Theme": "Tema",
+  "Circular Navigation Menu": "Menu de Navegação Circular",
+  "Illuminated Text": "Texto Iluminado",
+  "Loading": "Loading",
+  "A text with an effect to shine each letter. Javascript used just to split the letters.": "Um texto com efeito para brilhar cada letra. Javascript utilizado somente para separar as letras.",
+  "A toggler of day/night created with CSS (no javascript to functionality). Can be used to toggle between dark/light mode.": 'Um alternador de dia/noite criado com CSS (sem javascript para a). Pode ser utilizado para alternar entre modo escuro/claro.',
+  "Day/Night Toggler": "Alternador Dia/Noite"
  
 }
