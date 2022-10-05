@@ -1,20 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTheme } from '../../contexts/ThemeContext';
+
+// This context controls a variable in my personal page
+import { useTheme } from '../../contexts/ThemeContext'; // You can remove
 
 // I used before and after to create the star and clouds, but it's just an idea. 
 // You can use the react-icon library or another svg to create a better layout.
 
 const DayAndNight = () => {
-  const {theme, toggleTheme} = useTheme();
+  const {theme, toggleTheme} = useTheme(); // You can remove
 
   return (
     <Container>
         <input 
           id="toggle" 
           type="checkbox" 
-          defaultChecked={theme.name === 'dark'} 
-          onChange={()=> toggleTheme()} 
+
+          // This context controls a variable in my page
+          defaultChecked={theme.name === 'dark'} // You can remove
+          onChange={()=> toggleTheme()} // You can remove
         />
 
         <label htmlFor="toggle">
