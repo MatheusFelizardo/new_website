@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ProfilePic from '../../../public/images/profile.jpg'
+import ProfilePic from '../../../public/images/profile.png'
 import Image from 'next/image';
 import { FaGuitar, FaGamepad, FaBook, FaCheckCircle, FaReact, FaDrupal } from 'react-icons/fa'
 import { IoMdFootball } from 'react-icons/io'
@@ -9,7 +9,7 @@ import { Space, Typography, Timeline, Anchor } from 'antd';
 const { Text, Title } = Typography;
 import { Tabs } from 'antd';
 import { blue, green, red } from '@ant-design/colors';
-import { TwitterOutlined, InstagramOutlined, FacebookOutlined, LinkedinOutlined, GithubOutlined } from '@ant-design/icons';
+import { WhatsAppOutlined, TwitterOutlined, InstagramOutlined, FacebookOutlined, LinkedinOutlined, GithubOutlined } from '@ant-design/icons';
 import { Avatar, List } from 'antd';
 import useLanguage from '../../hooks/useLanguage';
 import { useEffect, useState } from 'react';
@@ -147,12 +147,17 @@ const SocialMedia = () => {
         <a className="icon" target="blank" href="https://www.instagram.com/matheus.felizardo_">
           <InstagramOutlined style={{ fontSize: '30px', color: '#08c' }}/>
         </a>
+        
         <a className="icon" target="blank" href="https://www.facebook.com/matheus.felizardo.3">
           <FacebookOutlined style={{ fontSize: '30px', color: '#08c' }}/>
         </a>
 
         <a className="icon" target="blank" href="https://www.twitter.com/theusfelizardo1">
           <TwitterOutlined style={{ fontSize: '30px', color: '#08c' }} />
+        </a>
+        
+        <a className="icon" target="blank" href="https://api.whatsapp.com/send?phone=5521965572555&text=Hello, Matheus">
+          <WhatsAppOutlined style={{ fontSize: '30px', color: '#08c' }} />
         </a>
     </Space>
   )
@@ -296,7 +301,7 @@ const Flex = styled.div`
 const ImageWrapper = styled.div`
   display: none;
   img {
-    clip-path: circle(40%);
+    clip-path: circle(49%);
   }
 
   @media (min-width: 768px) {
