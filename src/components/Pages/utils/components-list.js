@@ -31,7 +31,7 @@ export const components = [
   },
   {
     title: 'Sticky Menu', 
-    description: 'A menu fixed on top with a scroll animation in the logo": "Um menu fixado no topo com uma animação na logo ao scrollar', 
+    description: 'A menu fixed on top with a scroll animation in the logo', 
     element: <StickMenu />,
     path: `Menus/StickyMenu/StickyMenu.tsx`
   },

@@ -20,6 +20,7 @@ const StickMenu = () => {
   const menuRef = useRef()
 
   const handleScroll = () => {
+    // You can use JS to get the elements, instead of ref
     const content = document.querySelector('.content')
     const menu = document.querySelector('.main-menu')
     menu.classList.toggle('sticky', content.scrollTop > 0)
@@ -41,7 +42,7 @@ const StickMenu = () => {
       })
     }
   }
-  
+
   useLayoutEffect(()=> {
     setTimeout(getBlueBarPosition, 100)
   }, [titleRef, menuRef])
@@ -85,8 +86,8 @@ const StickMenu = () => {
         <section>
           <h2 ref={titleRef}>Welcome to MyPage</h2>
           <p><strong>
-            You will need to adjust this example using display fixed to the menu and adding the scroll event in the body or html</strong></p>
-            <p><strong>I used the React power to calc the elements height but you can use px or another unit</strong></p>
+            {translate('You will need to adjust this example using position fixed to the menu and adding the scroll event in the body or html tags')}</strong></p>
+            <p><strong>{translate('I used javascript to calc the elements height but you can use px or another unit')}</strong></p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae esse in fugiat consequuntur exercitationem inventore cum aliquam similique provident, minima necessitatibus dicta aspernatur, reprehenderit quidem enim mollitia ex facere? Libero amet aut ipsum quidem exercitationem rem quaerat ducimus at doloribus.</p>
 
           <h2>Woow!!</h2>

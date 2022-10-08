@@ -69,6 +69,8 @@ export const translations = {
   "Day/Night Toggler": "Alternador Dia/Noite",
   "Sticky Menu":"Sticky Menu",
   "A menu fixed on top with a scroll animation in the logo": "Um menu fixado no topo com uma animação na logo ao scrollar",
-  "Not functional!! This will be another component.": "Não funcional!! Este será outro componente."
+  "Not functional!! This will be another component.": "Não funcional!! Este será outro componente.",
+  "You will need to adjust this example using position fixed to the menu and adding the scroll event in the body or html tags": "Você precisará ajustar esse exemplo adicionando position fixed no menu e também o evento de scroll na tag body ou html",
+  "I used javascript to calc the elements height but you can use px or another unit": 'Eu usei javascript para calcular a altura dos elementos, mas você pode usar px ou outra unidade também.'
  
 }
