@@ -66,6 +66,9 @@ export const translations = {
   "Loading": "Loading",
   "A text with an effect to shine each letter. Javascript used just to split the letters.": "Um texto com efeito para brilhar cada letra. Javascript utilizado somente para separar as letras.",
   "A toggler of day/night created with CSS (no javascript to functionality). Can be used to toggle between dark/light mode.": 'Um alternador de dia/noite criado com CSS (sem javascript para a). Pode ser utilizado para alternar entre modo escuro/claro.',
-  "Day/Night Toggler": "Alternador Dia/Noite"
+  "Day/Night Toggler": "Alternador Dia/Noite",
+  "Sticky Menu":"Sticky Menu",
+  "A menu fixed on top with a scroll animation in the logo": "Um menu fixado no topo com uma animação na logo ao scrollar",
+  "Not functional!! This will be another component.": "Não funcional!! Este será outro componente."
  
 }

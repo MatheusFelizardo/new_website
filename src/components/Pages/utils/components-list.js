@@ -1,5 +1,6 @@
 import Loading from "../../Loading/Loading";
 import CircularNavigation from "../../Menus/CircularNavigation";
+import StickMenu from "../../Menus/StickyMenu/StickyMenu";
 import Illuminated from "../../Texts/IlluminatedText";
 import DayAndNight from "../../Toggles/DayAndNight";
 
@@ -27,5 +28,11 @@ export const components = [
     description: 'A toggler of day/night created with CSS.', 
     element: <DayAndNight />,
     path: `Toggles/DayAndNight.tsx`
+  },
+  {
+    title: 'Sticky Menu', 
+    description: 'A menu fixed on top with a scroll animation in the logo": "Um menu fixado no topo com uma animação na logo ao scrollar', 
+    element: <StickMenu />,
+    path: `Menus/StickyMenu/StickyMenu.tsx`
   },
 ]
