@@ -28,7 +28,7 @@ const Components = () => {
   const { translate, language } = useLanguage()
   const [visible, setVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<ComponentProps>(null);
-  const github_components_folder_url = `https://github.com/MatheusFelizardo/my-components/blob/main`
+  const github_components_folder_url = `https://github.com/MatheusFelizardo/new_website/tree/master/src/components/`
   
   const openModal = (component: ComponentProps) => {
     setSelectedComponent(component)

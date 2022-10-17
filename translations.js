@@ -71,6 +71,14 @@ export const translations = {
   "A menu fixed on top with a scroll animation in the logo. Scroll the text.": "Um menu fixado no topo com uma animação na logo ao scrollar. Scrolle o texto.",
   "Not functional!! This will be another component.": "Não funcional!! Este será outro componente.",
   "You will need to adjust this example using position fixed to the menu and adding the scroll event in the body or html tags": "Você precisará ajustar esse exemplo adicionando position fixed no menu e também o evento de scroll na tag body ou html",
-  "I used javascript to calc the elements height but you can use px or another unit": 'Eu usei javascript para calcular a altura dos elementos, mas você pode usar px ou outra unidade também.'
+  "I used javascript to calc the elements height but you can use px or another unit": 'Eu usei javascript para calcular a altura dos elementos, mas você pode usar px ou outra unidade também.',
+  "First tab active": "Primeira aba ativa",
+  "Scroll or click in the tab to switch the selected one.": 'Scrolle ou clique na tab para alterar a selecionada.',
+  "Second tab active": "Segunda aba ativa",
+  "Third tab active": "Terceira aba ativa",
+  'The scroll only works if you are inside the purple container because I selected the "containerRef" to add the mousewheel event.': 'O scroll só funciona se você estiver dentro do container roxo pois selecionei o "containerRef" para adicionar o evento mousewheel.',
+  'If you want to add the mousewheel event to the whole page, replace "element.addEventListener/removeEventListener" to "element.addEventListener/removeEventListener" inside the useEffect.': 'Se você quiser adicionar o evento mousewheel na página inteira, substitua "element.addEventListener/removeEventListener" por "element.addEventListener/removeEventListener" dentro do useEffect.',
+  "Tabs with scroll": "Abas com scroll",
+  "Tab items with possibility to scroll to switch the tabs": "Items em abas com possibilidade de usar o scroll para alternar as abas",
  
 }

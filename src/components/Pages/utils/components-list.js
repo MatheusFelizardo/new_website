@@ -3,6 +3,7 @@ import CircularNavigation from "../../Menus/CircularNavigation";
 import StickMenu from "../../Menus/StickyMenu/StickyMenu";
 import Illuminated from "../../Texts/IlluminatedText";
 import DayAndNight from "../../Toggles/DayAndNight";
+import Tabs from "../../Tabs/Tabs";
 
 export const components = [
   {
@@ -34,5 +35,11 @@ export const components = [
     description: 'A menu fixed on top with a scroll animation in the logo. Scroll the text.', 
     element: <StickMenu />,
     path: `Menus/StickyMenu/StickyMenu.tsx`
+  },
+  {
+    title: 'Tabs with scroll', 
+    description: 'Tab items with possibility to scroll to switch the tabs', 
+    element: <Tabs />,
+    path: `Tabs/Tabs.tsx`
   },
 ]
