@@ -1,13 +1,12 @@
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React, { useEffect } from 'react'
 import Components from '../components/Pages/Components'
 import useLanguage from '../hooks/useLanguage'
 import { PageProps } from './_app'
 
 const PageComponent = ({ setSelectedKey }: PageProps) => {
 
-  const { language, translate, setLanguage } = useLanguage()
+  const { translate } = useLanguage()
     useEffect(() => {
       setSelectedKey('9')
     }, [])

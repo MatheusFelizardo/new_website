@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
-import styled from 'styled-components'
-import { Tabs, Menu, Layout, notification, MenuTheme } from 'antd';
+import {  Menu, Layout, MenuTheme } from 'antd';
 import useMobileDetect from '../../../hooks/useMobileDetect';
 import useLanguage from '../../../hooks/useLanguage';
 const { Sider, Content } = Layout;
@@ -13,20 +11,18 @@ import { SiderTheme } from 'antd/lib/layout/Sider';
 import { MdOutlineWbSunny, MdDarkMode } from 'react-icons/md'
 import Icon from '@ant-design/icons';
 
-const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
+interface MainMenuProps {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  selectedKey:any
+}
+
+const MainMenu = ({ setLoading, selectedKey}: MainMenuProps) => {
   const isMobile = useMobileDetect()
   const { language, translate, setLanguage } = useLanguage()
   const router = useRouter()
   const [collapsed, setCollapsed] = useState(false)
   const {theme, toggleTheme} = useTheme();
   
-  const updatedCurrent = ({key, item}) => {
-    if (item.props.url) {
-      setSelectedKey(key)
-      router.push(item.props.url)
-    }
-  }
-
   const changeLanguage = (language: string) => {
     const currentLanguage = localStorage.getItem('language')
     if (currentLanguage === language) return
@@ -87,12 +83,3 @@ const MainMenu = ({loading, setLoading, setSelectedKey, selectedKey}) => {
 }
 
 export default MainMenu
-
-const Loading = styled.div`
-  width: 100%;
-  max-width: 1280px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`

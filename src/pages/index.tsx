@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React, { useEffect } from 'react'
 import Home from '../components/Pages/Home'
 import useLanguage from '../hooks/useLanguage'
 import { PageProps } from './_app'
 
-
 const PageHome = ({ setSelectedKey }: PageProps) => {
-  const { language, translate, setLanguage } = useLanguage()
+  const { translate } = useLanguage()
 
   useEffect(() => {
     setSelectedKey('1')

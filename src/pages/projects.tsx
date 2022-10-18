@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React, { useEffect } from 'react'
 import Projects from '../components/Pages/Projects'
 import useLanguage from '../hooks/useLanguage'
 import { PageProps } from './_app'

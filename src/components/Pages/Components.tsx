@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import useLanguage from '../../hooks/useLanguage'
-import { Button, Modal } from 'antd';
+import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import { components } from './utils/components-list'
+import { StyledOverlay, StyledWrapper, StyledContainer, StyledModal } from '../../styles/_components.style';
 
 interface ComponentProps {
   title: string
@@ -25,7 +25,7 @@ const Cat = () => {
 }
 
 const Components = () => {
-  const { translate, language } = useLanguage()
+  const { translate } = useLanguage()
   const [visible, setVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<ComponentProps>(null);
   const github_components_folder_url = `https://github.com/MatheusFelizardo/new_website/tree/master/src/components/`
@@ -36,17 +36,17 @@ const Components = () => {
   }
 
   return (
-    <Container>
+    <StyledContainer>
       <h2>{translate('This page contains some components created with React and CSS to study')}</h2>
 
-      <Wrapper>
+      <StyledWrapper>
         {components.map((component, index) => (
           <Button key={component.title + index} onClick={()=> openModal(component)} type="primary">{translate(component.title)}</Button>
         ))}
-      </Wrapper>
+      </StyledWrapper>
 
       {selectedComponent && (
-        <ComponentsModal
+        <StyledModal
           title={translate(selectedComponent.title)}
           centered
           visible={visible}
@@ -65,152 +65,11 @@ const Components = () => {
               <Cat />
             </a>       
           </div>
-        </ComponentsModal>
+        </StyledModal>
       )}
-    <Overlay />
-  </Container>
+    <StyledOverlay />
+  </StyledContainer>
   )
 }
 
 export default Components
-
-const Container = styled.section`
-  max-width: 1280px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem;
-  max-height: var(--screen-height);
-  overflow-y: auto;
-  opacity: 0;
-  animation: fade 1s linear forwards;
-
-  h2 {
-    font-size: 1.125rem;
-    animation: fade 1s linear;
-  }
-  
-  .icon {
-    svg {
-      transition: transform 0.3s;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-
-  @media (min-width: 1200px) {
-    padding: 1.25rem 3.125rem;
-    padding-top: 10vmin;
-  }
-
-`
-
-const Wrapper = styled.div`
-  animation: fade 1s linear;
-
-  flex-wrap: wrap;
-  display: flex;
-  gap: 1rem;
-  margin-top: 3rem;
-`
-
-const ComponentsModal = styled(Modal)`
-  .ant-modal-content {
-    
-  }
-  .ant-modal-header {
-    .ant-modal-title {
-
-    }
-  }
-
-  .ant-modal-body {
-    padding-bottom: 2rem;
-    > p {
-      margin-bottom: 3rem;
-    }
-
-    .link {
-    margin-top: 30px;
-    a {
-      position: relative;
-      padding-bottom: 2px;
-      &:before {
-        transition: width 1s;
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 10%;
-        height: 2px;
-        background: var(--blue-500);
-       }
-       &:hover {
-          svg { 
-            .head {
-              animation: head 1s;
-            }
-
-            .tail {
-              animation: tail 1s;
-            }
-          }
-
-          &:before {
-            width: 100%;
-          }
-        }
-
-    }
-
-    svg { 
-      margin-left: 5px;
-    }
-
-   
-    @keyframes head {
-      0% {
-        transform: translateX(1px);
-      }
-      50% {
-        transform: translateX(-1px);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes tail {
-      0% {
-        transform: translateY(1px);
-      }
-      50% {
-        transform: translateY(-1px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-  }
-  }
-
-`
-
-const Overlay = styled.div`
-  @media (min-width: 1024px) {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background: linear-gradient(115deg, rgba(255,255,255,0) 80%, rgba(232, 68, 3, 0.5) 100%);
-    opacity: 0;
-    animation: fade 1s linear forwards;
-  }
- 
-  @keyframes fade {
-    100% { opacity: 1;}
-  }
-`

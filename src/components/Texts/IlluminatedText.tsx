@@ -33,7 +33,6 @@ const Container = styled.div`
 
 const Text = styled.p`
   margin-bottom: 0;
-  font-family: 'Noto Sans Mono', monospace;
   font-size: max(18px, 5vmin);
   color: #444;
   letter-spacing: .5vmin;
