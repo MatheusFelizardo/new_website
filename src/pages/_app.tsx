@@ -208,6 +208,10 @@ const Loading = styled.div`
 
 
 const Intro = styled.div`
+
+&#intro {
+
+
   width: 100%;
   height: var(--screen-height);
   display: flex;
@@ -215,13 +219,18 @@ const Intro = styled.div`
   justify-content: flex-end;
   align-items: center;
   position: fixed;
-  inset: 0;
   z-index: 20;
   background: ${props => props.theme.colors.introBg};
   overflow: hidden;
-  &.hidden {
+  inset: 0;
+  transition: opacity 3s linear;
 
-    animation: fadeOutIntro 3s linear forwards;
+  &.hidden {
+    inset: initial;
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+    /* animation: fadeOutIntro 3s linear forwards; */
     .initial-loading, .logo-wrapper {
       animation: fadeOutIntro 2s linear forwards;
     }
@@ -326,15 +335,13 @@ const Intro = styled.div`
       opacity: 1;
     }
 
-    50% {
+    60% {
       opacity: 0;
-      inset: initial;
     }
 
     100% {
       position: absolute;
       left: -100vw;
-      pointer-events: none;
     }
   }
 
@@ -395,4 +402,5 @@ const Intro = styled.div`
       opacity: 0;
     }
   }
+}
 `
