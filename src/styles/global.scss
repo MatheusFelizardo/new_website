@@ -148,3 +148,62 @@ main {
 .ant-layout-sider-trigger {
     position: initial;
 }
+
+#intro {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 20;
+    
+    .initial-loading {
+        position: absolute;
+        z-index: 20;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIntro 2s linear forwards;
+      }
+    
+      .logo-wrapper {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 20;
+        svg {
+          animation: fadeIntro 2s linear forwards;
+          opacity: 0;
+          max-width: 200px;
+          height: 80px;
+          position: absolute;
+          path {
+            animation: changeColor 2s linear forwards;
+            animation-delay: 1s;
+          }
+          &:nth-of-type(1) {
+            transform: translate(-30%,0);
+          }
+    
+          &:nth-of-type(2) {
+            transform: translate(8%,35px);
+            animation-delay: .5s;
+          }
+    
+          &:nth-of-type(3) {
+            animation-delay: 1s;
+            transform: translate(30%,70px);
+          }
+        }
+      }
+}

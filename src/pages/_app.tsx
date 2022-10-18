@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <CustomThemeProvider>
-      <Intro className={showIntro ? 'visible' : 'hidden'}>
+      <Intro id="intro" className={showIntro ? 'visible' : 'hidden'}>
         <div className="initial-loading">
           <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
             <circle cx="50" cy="50" r="32" strokeWidth="8" stroke={theme?.name === 'dark' ? '#93dbe9' : '#0d5acd'}  strokeDasharray="50.26548245743669 50.26548245743669" fill="none" strokeLinecap="round">
@@ -209,7 +209,7 @@ const Loading = styled.div`
 
 const Intro = styled.div`
   width: 100%;
-  height: var(--screen-height);;
+  height: var(--screen-height);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
