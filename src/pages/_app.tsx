@@ -214,10 +214,12 @@ const Intro = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
+  position: fixed;
+  inset: 0;
   background: ${props => props.theme.colors.introBg};
   overflow: hidden;
   &.hidden {
+
     animation: fadeOutIntro 3s linear forwards;
     .initial-loading, .logo-wrapper {
       animation: fadeOutIntro 2s linear forwards;
@@ -323,8 +325,9 @@ const Intro = styled.div`
       opacity: 1;
     }
 
-    60% {
+    50% {
       opacity: 0;
+      inset: initial;
     }
 
     100% {
