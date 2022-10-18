@@ -12,7 +12,8 @@ interface Theme {
     primary: string,
     black: string,
     background: string,
-    text: string
+    text: string,
+    introBg: string
   }
 }
 
@@ -22,7 +23,8 @@ const light = {
     primary: 'var(--blue-500)',
     black: '#333',
     background: '#f1f1f1',
-    text: 'rgba(0, 0, 0, 0.85)'
+    text: 'rgba(0, 0, 0, 0.85)',
+    introBg: 'white',
   }
 }
 
@@ -32,7 +34,8 @@ const dark = {
     primary: 'var(--blue-500)',
     black: '#333',
     background: '#111d2c',
-    text: 'white'
+    text: 'white',
+    introBg: 'black',
   }
 }
 
