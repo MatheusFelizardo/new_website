@@ -198,8 +198,8 @@ const Goals = () => {
         <Space direction="vertical" size={2}>
           <Text>{translate("Learn more about software architecture")}</Text>
           <Text>{translate("Start to study spanish")}</Text>
-          <Text>
-            {translate("Be fluent in English with an study exchange")}
+          <Text delete>
+            {translate("Improve my English with an study exchange")}
           </Text>
           <Text delete>{translate("Start in a international company")}</Text>
         </Space>

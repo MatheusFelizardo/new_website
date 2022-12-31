@@ -42,7 +42,7 @@ export const translations = {
   "Started to study HTML, CSS and Javascript (Mar 2020)": "Comecei a estudar HTML, CSS e Javascript (Mar 2020)",
   "Learn more about software architecture": "Aprender mais sobre arquitetura de software",
   "Start to study spanish": "Começar a estudar espanhol",
-  "Be fluent in English with an study exchange": "Ser fluente em inglês fazendo um intercâmbio",
+  "Improve my English with an study exchange": "Melhorar meu inglês fazendo um intercâmbio",
   "Start in a international company": "Começar numa empresa internacional",
   "Improve my CSS skills": "Melhorar minhas habilidades no CSS",
   "Improve my English": "Melhorar meu inglês",
