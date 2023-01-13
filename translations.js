@@ -80,5 +80,9 @@ export const translations = {
   'If you want to add the mousewheel event to the whole page, replace "element.addEventListener/removeEventListener" to "element.addEventListener/removeEventListener" inside the useEffect.': 'Se você quiser adicionar o evento mousewheel na página inteira, substitua "element.addEventListener/removeEventListener" por "element.addEventListener/removeEventListener" dentro do useEffect.',
   "Tabs with scroll": "Abas com scroll",
   "Tab items with possibility to scroll to switch the tabs": "Items em abas com possibilidade de usar o scroll para alternar as abas",
- 
+ "Finish the Josh W. Comeau's CSS course": 'Finalizar o curso de CSS do Josh W. Comeau ',
+ "Learn MySQL": 'Aprender MySQL',
+ "Learn PHP + Laravel and create at least one project": 'Aprender PHP + Laravel e criar pelo menos um projeto',
+ "Start a master's degree in Software Engeneer": 'Começar um mestrado em Engenharia de Software'
+
 }

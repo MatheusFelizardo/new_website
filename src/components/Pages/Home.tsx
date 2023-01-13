@@ -190,14 +190,26 @@ const Goals = () => {
   const { translate } = useLanguage();
 
   return (
-    <Space direction="vertical" size={12}>
+    <Space direction="vertical" size={12} style={{paddingBottom: "20px"}}>
+      <div>
+        <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
+          2023
+        </Title>
+        <Space direction="vertical" size={2}>
+          <Text>{translate("Start a master's degree in Software Engeneer")}</Text>
+          <Text>{translate("Learn PHP + Laravel and create at least one project")}</Text>
+          <Text>{translate("Learn MySQL")}</Text>
+          <Text>{translate("Finish the Josh W. Comeau's CSS course")}</Text>
+        </Space>
+      </div>
+
       <div>
         <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
           2022
         </Title>
         <Space direction="vertical" size={2}>
-          <Text>{translate("Learn more about software architecture")}</Text>
-          <Text>{translate("Start to study spanish")}</Text>
+          <Text delete>{translate("Learn more about software architecture")}</Text>
+          <Text style={{color: red.primary}} delete>{translate("Start to study spanish")}</Text>
           <Text delete>
             {translate("Improve my English with an study exchange")}
           </Text>
