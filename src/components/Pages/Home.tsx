@@ -302,7 +302,7 @@ const Home = () => {
               </Title>
               <StyledText>
                 {translate(
-                  "I'm a front-end developer based in Rio de Janeiro, Brazil."
+                  "I'm a front-end developer based in Dublin, Ireland."
                 )}
               </StyledText>
               <StyledText>

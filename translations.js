@@ -16,7 +16,7 @@ export const translations = {
   "play guitar": "tocar violão",
   "I'm not very good, but I play almost every day.": "Eu não sou muito bom, mas eu toco quase todos os dias.",
   "Hi, I'm": "Olá, eu sou",
-  "I'm a front-end developer based in Rio de Janeiro, Brazil.": "Sou desenvolvedor front-end e moro no Rio de Janeiro, Brasil.",
+  "I'm a front-end developer based in Dublin, Ireland.": "Sou desenvolvedor front-end e atualmente moro em Dublin, Irlanda.",
   "I'm": "Tenho",
   "years old and I'm a developer since October/2020.": "anos e sou desenvolvedor desde Outubro/2020.",
   "Currently working at Envivent.": "Atualmente trabalho na Envivent.",
