@@ -5,7 +5,6 @@ const { Text, Title } = Typography;
 
 export const StyledContainer = styled.section`
   font: 400 1rem "Fira Code", sans-serif;
-  max-width: 1280px;
   width: 100%;
   height: var(--screen-height);
   display: flex;
@@ -15,7 +14,6 @@ export const StyledContainer = styled.section`
   overflow-y: auto;
   opacity: 0;
   animation: fade 1s linear forwards;
-  
 
   .icon {
     svg {

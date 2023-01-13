@@ -293,8 +293,8 @@ const Home = () => {
   return (
     <>
       <StyledContainer>
-        <StyledWrapper>
-          <StyledBox>
+        <StyledWrapper className="max-width">
+          <StyledBox >
             <Space direction="vertical" size={4}>
               <StyledText>{translate("Hi, I'm")} </StyledText>
               <Title className="title" title="Matheus Felizardo">
@@ -320,7 +320,7 @@ const Home = () => {
           </StyledImageWrapper>
         </StyledWrapper>
 
-        <StyledBox>
+        <StyledBox className="max-width">
           <Tabs defaultActiveKey="1">
             <TabPane tab={translate("Hobbies")} key="1">
               <Hobbies />
