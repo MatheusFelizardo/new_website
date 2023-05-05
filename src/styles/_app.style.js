@@ -286,7 +286,7 @@ export const StyledIntro = styled.div`
 
 export const StyledLanguage = styled.div`
   position: fixed;
-  top: 15px;
+  top: 5px;
   right: 25px;
   z-index: 1000;
 
