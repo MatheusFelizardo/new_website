@@ -283,3 +283,26 @@ export const StyledIntro = styled.div`
     }
   }
 `
+
+export const StyledLanguage = styled.div`
+  position: fixed;
+  top: 15px;
+  right: 25px;
+  z-index: 1000;
+
+  button {
+    cursor: pointer;
+    padding: 0 6px;
+    font-size: .75rem;
+    border: none;
+    margin: 0 2px;
+    color: black;
+    border-radius: 4px;
+
+    &.active {
+      background: var(--purple-900);
+      color: white;
+      font-weight: bold;
+    }
+  }
+`

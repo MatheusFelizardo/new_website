@@ -196,7 +196,7 @@ const Goals = () => {
           2023
         </Title>
         <Space direction="vertical" size={2}>
-          <Text>{translate("Start a master's degree in Software Engeneer")}</Text>
+          <Text>{translate("Start a master's degree in Software Engineer")}</Text>
           <Text>{translate("Learn PHP + Laravel and create at least one project")}</Text>
           <Text>{translate("Learn MySQL")}</Text>
           <Text>{translate("Finish the Josh W. Comeau's CSS course")}</Text>

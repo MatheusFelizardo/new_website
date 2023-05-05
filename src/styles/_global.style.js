@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     color: var(--white);
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   body, input, select, textarea, button {

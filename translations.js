@@ -83,6 +83,6 @@ export const translations = {
  "Finish the Josh W. Comeau's CSS course": 'Finalizar o curso de CSS do Josh W. Comeau ',
  "Learn MySQL": 'Aprender MySQL',
  "Learn PHP + Laravel and create at least one project": 'Aprender PHP + Laravel e criar pelo menos um projeto',
- "Start a master's degree in Software Engeneer": 'Começar um mestrado em Engenharia de Software'
+ "Start a master's degree in Software Engineer": 'Começar um mestrado em Engenharia de Software'
 
 }

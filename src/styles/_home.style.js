@@ -30,6 +30,9 @@ export const StyledContainer = styled.section`
 
   @media (min-width: 768px) {
     padding: 1.25rem 3.125rem;
+
+    &::-webkit-scrollbar {
+    }
   }
 `
 export const StyledOverlay = styled.div`
@@ -83,12 +86,9 @@ export const StyledImageWrapper = styled.div`
   @media (min-width: 768px) {
     display: initial;
 
-    width: 200px;
+    max-width: 200px;
   }
 
-  @media (min-width: 1024px) {
-    width: 300px;
-  }
 `
 export const StyledIcon = styled.div`
   svg {
