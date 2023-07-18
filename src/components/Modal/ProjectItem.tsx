@@ -149,6 +149,7 @@ const StyledDrawer = styled(Drawer)`
     margin-bottom: 40px;
     video {
       width: 100%;
+      max-height: 250px;
     }
   }
 
@@ -199,6 +200,7 @@ const ImageCard = styled.div`
     object-fit: contain;
     transform: scale(0.99);
     transition: all .2s;
+    max-height: 250px;
   }
 
   &:hover {
@@ -231,6 +233,9 @@ const ProjectItem = ({project}: Project) => {
 
   const onClose = () => {
     setOpen(false)
+
+    const video = document.querySelector('.video-container video')
+    video?.pause()
   }
 
   return (
