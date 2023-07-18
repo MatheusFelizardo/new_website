@@ -234,7 +234,7 @@ const ProjectItem = ({project}: Project) => {
   const onClose = () => {
     setOpen(false)
 
-    const video = document.querySelector('.video-container video')
+    const video = document.querySelector('.video-container video') as HTMLVideoElement
     video?.pause()
   }
 
