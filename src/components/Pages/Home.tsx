@@ -160,7 +160,7 @@ const Career = () => {
       <Timeline>
         <Timeline.Item dot={<FaDrupal style={{ fontSize: "20px" }} />}>
           {translate(
-            "Get my first internation job in Envivent, as web developer using Drupal and React. (Apr 2022)"
+            "Get my first internationational job in Envivent, as web developer using Drupal and React. (Apr 2022)"
           )}
         </Timeline.Item>
         <Timeline.Item dot={<FaReact style={{ fontSize: "20px" }} />}>
@@ -196,8 +196,8 @@ const Goals = () => {
           2023
         </Title>
         <Space direction="vertical" size={2}>
-          <Text>{translate("Start a master's degree in Software Engineer")}</Text>
-          <Text>{translate("Learn PHP + Laravel and create at least one project")}</Text>
+          <Text delete>{translate("Start a master's degree in Software Engineer")}</Text>
+          <Text delete>{translate("Learn PHP + Laravel and create at least one project")}</Text>
           <Text>{translate("Learn MySQL")}</Text>
           <Text>{translate("Finish the Josh W. Comeau's CSS course")}</Text>
         </Space>

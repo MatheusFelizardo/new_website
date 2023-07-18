@@ -35,7 +35,7 @@ export const translations = {
   "movies": "cinema",
   "I go pretty often, every time I can": "Eu vou com frequência, e sempre que posso",
   "I'm not a film critic, I just love to go": "Eu não sou nenhum crítico, só gosto de ir",
-  "Get my first internation job in Envivent, as web developer using Drupal and React. (Apr 2022)": "Consegui meu primeiro trabalho internacional na Envivent, como desenvolvedor web utilizando Drupal e React (Abr 2022)",
+  "Get my first internationational job in Envivent, as web developer using Drupal and React. (Apr 2022)": "Consegui meu primeiro trabalho internacional na Envivent, como desenvolvedor web utilizando Drupal e React (Abr 2022)",
   "Starting to work as software developer in Intelie, using React. (Jun 2021)": "Começando a trabalhar como desenvolvedor de software na Intelie, utilizando React (Jun 2021)",
   "Get a promotion on Inforce, to Junior Front-end developer. (Jan 2021)": "Consegui uma promoção na Inforce, para Desenvolvedor Front-end Junior (Jan 2021)",
   "Get my first job on Inforce, starting as trainee. (Oct 2020)": "Consegui meu primeiro trabalho na Inforce, começando como trainee (Out 2020)",
