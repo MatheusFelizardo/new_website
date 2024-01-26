@@ -5,7 +5,6 @@ const { Text, Title } = Typography;
 
 export const StyledContainer = styled.section`
   font: 400 1rem "Fira Code", sans-serif;
-  max-width: 1280px;
   width: 100%;
   height: var(--screen-height);
   display: flex;
@@ -15,7 +14,6 @@ export const StyledContainer = styled.section`
   overflow-y: auto;
   opacity: 0;
   animation: fade 1s linear forwards;
-  
 
   .icon {
     svg {
@@ -32,6 +30,9 @@ export const StyledContainer = styled.section`
 
   @media (min-width: 768px) {
     padding: 1.25rem 3.125rem;
+
+    &::-webkit-scrollbar {
+    }
   }
 `
 export const StyledOverlay = styled.div`
@@ -85,12 +86,9 @@ export const StyledImageWrapper = styled.div`
   @media (min-width: 768px) {
     display: initial;
 
-    width: 200px;
+    max-width: 200px;
   }
 
-  @media (min-width: 1024px) {
-    width: 300px;
-  }
 `
 export const StyledIcon = styled.div`
   svg {

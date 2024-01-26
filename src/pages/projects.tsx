@@ -14,6 +14,11 @@ const PageProjects = ({ setSelectedKey }: PageProps ) => {
   return (
     <>
       <Head>
+          <meta property="og:image" content="/images/mrf-logo.png" />
+          <meta property="og:title" content="Matheus Rodrigues Felizardo | Front-end developer - Projects" />
+          <meta property="og:description" content="Take a look in the projects powered by Matheus Rodrigues Felizardo | Dê uma olhada nos projetos desenvolvidos por Matheus Rodrigues Felizardo" />
+          <meta property="og:url" content="https://www.matheusfelizardo.com.br/projects" />
+          <meta name="description" content="Take a look in the projects powered by Matheus Rodrigues Felizardo | Dê uma olhada nos projetos desenvolvidos por Matheus Rodrigues Felizardo" />
           <title>{`${translate("Projects")} | ${translate("Matheus Felizardo - Front-end developer")}`}</title>
       </Head>
     

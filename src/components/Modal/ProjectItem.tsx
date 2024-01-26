@@ -149,6 +149,7 @@ const StyledDrawer = styled(Drawer)`
     margin-bottom: 40px;
     video {
       width: 100%;
+      max-height: 250px;
     }
   }
 
@@ -199,6 +200,7 @@ const ImageCard = styled.div`
     object-fit: contain;
     transform: scale(0.99);
     transition: all .2s;
+    max-height: 250px;
   }
 
   &:hover {
@@ -223,14 +225,18 @@ const Cat = () => {
 const ProjectItem = ({project}: Project) => {
   const {language, translate} = useLanguage()
   const [open, setOpen] = useState(false) 
-
+  const videoRef = useRef(null)
+  
   const showDrawer = () => {
     setOpen(true)
     notification.destroy()
+    videoRef.current?.play()
   }
 
   const onClose = () => {
     setOpen(false)
+
+    videoRef.current?.pause()
   }
 
   return (
@@ -246,7 +252,7 @@ const ProjectItem = ({project}: Project) => {
       >
          { project.video ?
           <div className="video-container">
-            <video id={project.video} src={`/videos/${project.video}`} controls autoPlay loop>
+            <video ref={videoRef} id={project.video} src={`/videos/${project.video}`} controls autoPlay loop>
             </video>
           </div> :
           <div className="image-container">

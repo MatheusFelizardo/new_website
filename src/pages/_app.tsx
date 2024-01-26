@@ -27,7 +27,7 @@ Router.events.on('routeChangeComplete', () => { NProgress?.done(); })
 Router.events.on('routeChangeError', () => { NProgress?.done(); })
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { language } = useLanguage()
+  const { language, translate } = useLanguage()
   const [showIntro, setShowIntro] = useState(true)
   const [initialShowContent, setInitialShowContent] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -69,8 +69,16 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
-                        
+
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        
+        <meta property="og:image" content="/images/mrf-logo.png" />
+        <meta property="og:title" content="Matheus Rodrigues Felizardo | Front-end developer" />
+        <meta property="og:description" content="Matheus Rodrigues Felizardo's personal page | Página pessoal de Matheus Rodrigues Felizardo" />
+        <meta property="og:url" content="https://www.matheusfelizardo.com.br" />
+        <meta name="description" content="Matheus Rodrigues Felizardo's personal page | Página pessoal de Matheus Rodrigues Felizardo" />
+        <title>{`${translate("Home")} | ${translate("Matheus Felizardo - Front-end developer")}`}</title>
       </Head>
       <CustomThemeProvider>
         <GlobalStyle />

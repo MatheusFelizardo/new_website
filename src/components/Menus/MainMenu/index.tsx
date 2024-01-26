@@ -10,6 +10,7 @@ import { useTheme } from '../../../contexts/ThemeContext';
 import { SiderTheme } from 'antd/lib/layout/Sider';
 import { MdOutlineWbSunny, MdDarkMode } from 'react-icons/md'
 import Icon from '@ant-design/icons';
+import { StyledLanguage } from '../../../styles/_app.style';
 
 interface MainMenuProps {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -18,17 +19,13 @@ interface MainMenuProps {
 
 const MainMenu = ({ setLoading, selectedKey}: MainMenuProps) => {
   const isMobile = useMobileDetect()
-  const { language, translate, setLanguage } = useLanguage()
+  const { language, translate, setLanguage, changeCurrentLanguage } = useLanguage()
   const router = useRouter()
   const [collapsed, setCollapsed] = useState(false)
   const {theme, toggleTheme} = useTheme();
   
   const changeLanguage = (language: string) => {
-    const currentLanguage = localStorage.getItem('language')
-    if (currentLanguage === language) return
-
-    setLanguage(language)
-    localStorage.setItem('language', language);
+    changeCurrentLanguage(language)
     setLoading(true)
     return
   }
@@ -36,7 +33,7 @@ const MainMenu = ({ setLoading, selectedKey}: MainMenuProps) => {
   const items = [
     {label: <Link href="/">{translate('About me')}</Link>, key: '1', icon: <UserOutlined /> }, 
     {label: <Link href="/projects">{translate('Projects')}</Link>, key: '2', icon: <CodeOutlined /> },
-    {label: <Link href="/components">{translate('Components')}</Link>, key: '9', icon: <QrcodeOutlined /> },
+    // {label: <Link href="/components">{translate('Components')}</Link>, key: '9', icon: <QrcodeOutlined /> },
     {label: translate('Resume'), key: '6', icon: <FileOutlined />, children: [
     {label: <a download href="/documents/matheus-resume-en.pdf">{translate('In English')}</a>, key: '7'}, 
     {label: <a download href="/documents/matheus-curriculum-ptBr.pdf">{translate('In Portuguese')}</a>, key: '8'}] },
@@ -67,6 +64,14 @@ const MainMenu = ({ setLoading, selectedKey}: MainMenuProps) => {
       onCollapse={(value) => setCollapsed(value)}
       theme={theme.name as SiderTheme}
     >
+      <StyledLanguage>
+        <button 
+        onClick={() => changeLanguage('en')} 
+        className={language === 'en' ? "active" : ''}>EN</button>
+        <button 
+        className={language !== 'en' ? "active" : ''}
+        onClick={() => changeLanguage('pt-Br')}>PT</button>
+      </StyledLanguage>
       <Menu
         defaultSelectedKeys={[selectedKey]}
         defaultOpenKeys={['sub1']}

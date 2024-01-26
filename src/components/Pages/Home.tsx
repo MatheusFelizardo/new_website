@@ -160,7 +160,7 @@ const Career = () => {
       <Timeline>
         <Timeline.Item dot={<FaDrupal style={{ fontSize: "20px" }} />}>
           {translate(
-            "Get my first internation job in Envivent, as web developer using Drupal and React. (Apr 2022)"
+            "Get my first internationational job in Envivent, as web developer using Drupal and React. (Apr 2022)"
           )}
         </Timeline.Item>
         <Timeline.Item dot={<FaReact style={{ fontSize: "20px" }} />}>
@@ -190,16 +190,28 @@ const Goals = () => {
   const { translate } = useLanguage();
 
   return (
-    <Space direction="vertical" size={12}>
+    <Space direction="vertical" size={12} style={{paddingBottom: "20px"}}>
+      <div>
+        <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
+          2023
+        </Title>
+        <Space direction="vertical" size={2}>
+          <Text delete>{translate("Start a master's degree in Software Engineer")}</Text>
+          <Text delete>{translate("Learn PHP + Laravel and create at least one project")}</Text>
+          <Text>{translate("Learn MySQL")}</Text>
+          <Text>{translate("Finish the Josh W. Comeau's CSS course")}</Text>
+        </Space>
+      </div>
+
       <div>
         <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
           2022
         </Title>
         <Space direction="vertical" size={2}>
-          <Text>{translate("Learn more about software architecture")}</Text>
-          <Text>{translate("Start to study spanish")}</Text>
-          <Text>
-            {translate("Be fluent in English with an study exchange")}
+          <Text delete>{translate("Learn more about software architecture")}</Text>
+          <Text style={{color: red.primary}} delete>{translate("Start to study spanish")}</Text>
+          <Text delete>
+            {translate("Improve my English with an study exchange")}
           </Text>
           <Text delete>{translate("Start in a international company")}</Text>
         </Space>
@@ -281,8 +293,8 @@ const Home = () => {
   return (
     <>
       <StyledContainer>
-        <StyledWrapper>
-          <StyledBox>
+        <StyledWrapper className="max-width">
+          <StyledBox >
             <Space direction="vertical" size={4}>
               <StyledText>{translate("Hi, I'm")} </StyledText>
               <Title className="title" title="Matheus Felizardo">
@@ -290,7 +302,7 @@ const Home = () => {
               </Title>
               <StyledText>
                 {translate(
-                  "I'm a front-end developer based in Rio de Janeiro, Brazil."
+                  "I'm a front-end developer based in Dublin, Ireland."
                 )}
               </StyledText>
               <StyledText>
@@ -308,7 +320,7 @@ const Home = () => {
           </StyledImageWrapper>
         </StyledWrapper>
 
-        <StyledBox>
+        <StyledBox className="max-width">
           <Tabs defaultActiveKey="1">
             <TabPane tab={translate("Hobbies")} key="1">
               <Hobbies />
