@@ -33,7 +33,7 @@ const MainMenu = ({ setLoading, selectedKey}: MainMenuProps) => {
   const items = [
     {label: <Link href="/">{translate('About me')}</Link>, key: '1', icon: <UserOutlined /> }, 
     {label: <Link href="/projects">{translate('Projects')}</Link>, key: '2', icon: <CodeOutlined /> },
-    {label: <Link href="/components">{translate('Components')}</Link>, key: '9', icon: <QrcodeOutlined /> },
+    // {label: <Link href="/components">{translate('Components')}</Link>, key: '9', icon: <QrcodeOutlined /> },
     {label: translate('Resume'), key: '6', icon: <FileOutlined />, children: [
     {label: <a download href="/documents/matheus-resume-en.pdf">{translate('In English')}</a>, key: '7'}, 
     {label: <a download href="/documents/matheus-curriculum-ptBr.pdf">{translate('In Portuguese')}</a>, key: '8'}] },

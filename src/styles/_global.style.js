@@ -207,6 +207,20 @@ const GlobalStyle = createGlobalStyle`
     } 
   }
 
+  // style scroll bar
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1890ff;
+    border-radius: 10px;
+  }
+
 
   // nprogress
     /* Make clicks pass-through */

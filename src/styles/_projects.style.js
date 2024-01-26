@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.section`
-  max-width: 1280px;
+  max-width: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,8 @@ export const StyledContainer = styled.section`
   opacity: 0;
   animation: fade 1s linear forwards;
   
+  
+
   .icon {
     svg {
       transition: transform 0.3s;
@@ -27,11 +29,13 @@ export const StyledContainer = styled.section`
 
 `
 export const StyledProjectsContainer = styled.div`
-  
+  max-width: 1280px;
   display: grid;
-  gap: 20px;
+  gap: 30px;
   align-items: center;
   grid-template-columns: 1fr;
+
+  
 
   @media (min-width: 900px) {
     grid-template-columns: 1fr 1fr;

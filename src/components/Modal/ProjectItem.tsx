@@ -225,17 +225,18 @@ const Cat = () => {
 const ProjectItem = ({project}: Project) => {
   const {language, translate} = useLanguage()
   const [open, setOpen] = useState(false) 
-
+  const videoRef = useRef(null)
+  
   const showDrawer = () => {
     setOpen(true)
     notification.destroy()
+    videoRef.current?.play()
   }
 
   const onClose = () => {
     setOpen(false)
 
-    const video = document.querySelector('.video-container video') as HTMLVideoElement
-    video?.pause()
+    videoRef.current?.pause()
   }
 
   return (
@@ -251,7 +252,7 @@ const ProjectItem = ({project}: Project) => {
       >
          { project.video ?
           <div className="video-container">
-            <video id={project.video} src={`/videos/${project.video}`} controls autoPlay loop>
+            <video ref={videoRef} id={project.video} src={`/videos/${project.video}`} controls autoPlay loop>
             </video>
           </div> :
           <div className="image-container">
