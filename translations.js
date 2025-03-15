@@ -16,9 +16,9 @@ export const translations = {
   "play guitar": "tocar violão",
   "I'm not very good, but I play almost every day.": "Eu não sou muito bom, mas eu toco quase todos os dias.",
   "Hi, I'm": "Olá, eu sou",
-  "I'm a front-end developer based in Dublin, Ireland.": "Sou desenvolvedor front-end e atualmente moro em Dublin, Irlanda.",
+  "I'm a front-end developer based in Porto, Portugal.": "Sou desenvolvedor front-end e atualmente moro em Porto, Portugal.",
   "I'm": "Tenho",
-  "years old and I'm a developer since October/2020.": "anos e sou desenvolvedor desde Outubro/2020.",
+  "5 years experience em development": "5 anos de experiência em desenvolvimento",
   "Currently working at Envivent.": "Atualmente trabalho na Envivent.",
   "Here is one I used to play but now I just watch, but still love it.": "Eu costumava jogar e agora eu apenas assisto, mas continuo amando.",
   "I love to watch soccer. I support ": "Eu amo assistir futebol. Eu torço para o ",
@@ -83,6 +83,10 @@ export const translations = {
  "Finish the Josh W. Comeau's CSS course": 'Finalizar o curso de CSS do Josh W. Comeau ',
  "Learn MySQL": 'Aprender MySQL',
  "Learn PHP + Laravel and create at least one project": 'Aprender PHP + Laravel e criar pelo menos um projeto',
- "Start a master's degree in Software Engineer": 'Começar um mestrado em Engenharia de Software'
+ "Start a master's degree in Software Engineer": 'Começar um mestrado em Engenharia de Software',
+ "Finish all master's degree subjects": 'Finalizar todas as disciplinas do mestrado',
+ "Dive into AI and Machine Learning": 'Aprofundar em IA e Machine Learning',
+ "Learn french - A1 to B2": 'Aprender francês - A1 a B2',
+ "Finish the master's degree": 'Finalizar o mestrado',
 
 }

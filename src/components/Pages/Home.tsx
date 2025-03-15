@@ -35,7 +35,7 @@ import {
   GithubOutlined,
 } from "@ant-design/icons";
 
-// Styled Components 
+// Styled Components
 import {
   StyledContainer,
   StyledHobbieCards,
@@ -190,16 +190,42 @@ const Goals = () => {
   const { translate } = useLanguage();
 
   return (
-    <Space direction="vertical" size={12} style={{paddingBottom: "20px"}}>
+    <Space direction="vertical" size={12} style={{ paddingBottom: "20px" }}>
+      <div>
+        <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
+          2025
+        </Title>
+        <Space direction="vertical" size={2}>
+          <Text>{translate("Finish the master's degree")}</Text>
+          <Text>{translate("Learn french - A1 to B2")}</Text>
+          <Text>{translate("Dive into AI and Machine Learning")}</Text>
+        </Space>
+      </div>
+
+      <div>
+        <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
+          2024
+        </Title>
+        <Space direction="vertical" size={2}>
+          <Text delete>{translate("Finish all master's degree subjects")}</Text>
+        </Space>
+      </div>
+
       <div>
         <Title level={2} style={{ marginBottom: 0, color: blue.primary }}>
           2023
         </Title>
         <Space direction="vertical" size={2}>
-          <Text delete>{translate("Start a master's degree in Software Engineer")}</Text>
-          <Text delete>{translate("Learn PHP + Laravel and create at least one project")}</Text>
-          <Text>{translate("Learn MySQL")}</Text>
-          <Text>{translate("Finish the Josh W. Comeau's CSS course")}</Text>
+          <Text delete>
+            {translate("Start a master's degree in Software Engineer")}
+          </Text>
+          <Text delete>
+            {translate("Learn PHP + Laravel and create at least one project")}
+          </Text>
+          <Text delete>{translate("Learn MySQL")}</Text>
+          <Text delete style={{ color: red.primary }}>
+            {translate("Finish the Josh W. Comeau's CSS course")}
+          </Text>
         </Space>
       </div>
 
@@ -208,8 +234,12 @@ const Goals = () => {
           2022
         </Title>
         <Space direction="vertical" size={2}>
-          <Text delete>{translate("Learn more about software architecture")}</Text>
-          <Text style={{color: red.primary}} delete>{translate("Start to study spanish")}</Text>
+          <Text delete>
+            {translate("Learn more about software architecture")}
+          </Text>
+          <Text style={{ color: red.primary }} delete>
+            {translate("Start to study spanish")}
+          </Text>
           <Text delete>
             {translate("Improve my English with an study exchange")}
           </Text>
@@ -263,18 +293,18 @@ const SocialMedia = () => {
         <FacebookOutlined style={{ fontSize: "30px", color: "#08c" }} />
       </a>
 
-      <a
+      {/* <a
         className="icon"
         target="blank"
         href="https://www.twitter.com/theusfelizardo1"
       >
         <TwitterOutlined style={{ fontSize: "30px", color: "#08c" }} />
-      </a>
+      </a> */}
 
       <a
         className="icon"
         target="blank"
-        href="https://api.whatsapp.com/send?phone=5521965572555&text=Hello, Matheus"
+        href="https://api.whatsapp.com/send?phone=+351961757575&text=Hello, Matheus"
       >
         <WhatsAppOutlined style={{ fontSize: "30px", color: "#08c" }} />
       </a>
@@ -294,7 +324,7 @@ const Home = () => {
     <>
       <StyledContainer>
         <StyledWrapper className="max-width">
-          <StyledBox >
+          <StyledBox>
             <Space direction="vertical" size={4}>
               <StyledText>{translate("Hi, I'm")} </StyledText>
               <Title className="title" title="Matheus Felizardo">
@@ -302,12 +332,11 @@ const Home = () => {
               </Title>
               <StyledText>
                 {translate(
-                  "I'm a front-end developer based in Dublin, Ireland."
+                  "I'm a front-end developer based in Porto, Portugal."
                 )}
               </StyledText>
               <StyledText>
-                {translate("I'm")} {birthdate}{" "}
-                {translate("years old and I'm a developer since October/2020.")}
+                {translate("5 years experience em development")}
               </StyledText>
               <StyledText>
                 {translate("Currently working at Envivent.")}
@@ -342,6 +371,6 @@ const Home = () => {
       </StyledContainer>
     </>
   );
-}
+};
 
-export default Home
+export default Home;

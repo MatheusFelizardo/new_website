@@ -1,14 +1,24 @@
-import React, { useRef } from 'react'
-import styled from 'styled-components'
-import { HomeOutlined, PlusOutlined, UserOutlined, GithubOutlined, TwitterOutlined, FacebookOutlined, PoweroffOutlined, InstagramOutlined, LinkedinOutlined } from '@ant-design/icons';
+import React, { useRef } from "react";
+import styled from "styled-components";
+import {
+  HomeOutlined,
+  PlusOutlined,
+  UserOutlined,
+  GithubOutlined,
+  TwitterOutlined,
+  FacebookOutlined,
+  PoweroffOutlined,
+  InstagramOutlined,
+  LinkedinOutlined,
+} from "@ant-design/icons";
 
 const CircularNavigation = () => {
-  const menuRef = useRef(null)
+  const menuRef = useRef(null);
 
   const handleClick = (e) => {
     e.preventDefault();
-    menuRef.current.classList.toggle('active')
-  }
+    menuRef.current.classList.toggle("active");
+  };
 
   return (
     <Container ref={menuRef}>
@@ -16,51 +26,51 @@ const CircularNavigation = () => {
         <PlusOutlined />
       </div>
 
-      <li style={{["--i" as any]:0}}>
+      <li style={{ ["--i" as any]: 0 }}>
         <a href="/" target="_blank">
           <HomeOutlined />
         </a>
       </li>
-      <li style={{["--i" as any]:1}}>
+      <li style={{ ["--i" as any]: 1 }}>
         <a href="https://linktr.ee/matheusfelizardo" target="_blank">
           <UserOutlined />
         </a>
       </li>
-      <li style={{["--i" as any]:2}}>
-        <a href="https://github.com/MatheusFelizardo" target="_blank" >
+      <li style={{ ["--i" as any]: 2 }}>
+        <a href="https://github.com/MatheusFelizardo" target="_blank">
           <GithubOutlined />
         </a>
       </li>
-      <li style={{["--i" as any]:3}}>
+      {/* <li style={{["--i" as any]:3}}>
         <a href="https://twitter.com/theusfelizardo1" target="_blank" >
           <TwitterOutlined />
         </a>
-      </li>
-      <li style={{["--i" as any]:4}}>
+      </li> */}
+      <li style={{ ["--i" as any]: 4 }}>
         <a href="https://www.instagram.com/matheus.felizardo_/" target="_blank">
-        <InstagramOutlined />
+          <InstagramOutlined />
         </a>
       </li>
-      <li style={{["--i" as any]:5}}>
+      <li style={{ ["--i" as any]: 5 }}>
         <a href="https://www.facebook.com/matheus.felizardo.3/" target="_blank">
           <FacebookOutlined />
         </a>
       </li>
-      <li style={{["--i" as any]:6}}>
+      <li style={{ ["--i" as any]: 6 }}>
         <a href="https://www.linkedin.com/in/matheus-felizardo" target="_blank">
           <LinkedinOutlined />
         </a>
       </li>
-      <li style={{["--i" as any]:7}}>
+      <li style={{ ["--i" as any]: 7 }}>
         <a href="#" onClick={handleClick}>
           <PoweroffOutlined />
         </a>
       </li>
     </Container>
-  )
-}
+  );
+};
 
-export default CircularNavigation
+export default CircularNavigation;
 
 const Container = styled.nav`
   width: 200px;
@@ -86,13 +96,13 @@ const Container = styled.nav`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 1.25s, box-shadow .2s;
+    transition: all 1.25s, box-shadow 0.2s;
     z-index: 999;
     position: absolute;
 
     &:hover {
-        box-shadow: 0 0 5px var(--blue-500);
-      }
+      box-shadow: 0 0 5px var(--blue-500);
+    }
   }
 
   li {
@@ -100,8 +110,8 @@ const Container = styled.nav`
     list-style: none;
     left: 0;
     transform-origin: 100px;
-    transition: .5s;
-    transition-delay: calc(.1s * var(--i));
+    transition: 0.5s;
+    transition-delay: calc(0.1s * var(--i));
     transform: rotate(0deg) translateX(80px);
 
     a {
@@ -127,13 +137,12 @@ const Container = styled.nav`
   }
 
   &.active {
-
     .toggle {
-      transform: rotate(315deg) ;
+      transform: rotate(315deg);
     }
 
     li {
       transform: rotate(calc(360deg / 8 * var(--i)));
     }
   }
-`
+`;
