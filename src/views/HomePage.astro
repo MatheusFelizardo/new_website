@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/home/Hero.astro';
+import Experience from '@/components/home/Experience.astro';
+import Projects from '@/components/home/Projects.astro';
+import LatestPosts from '@/components/home/LatestPosts.astro';
+import Contact from '@/components/home/Contact.astro';
+import { profile } from '@/data/profile';
+import { useTranslations, htmlLang, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: Astro.site?.toString(),
+  jobTitle: 'Software Engineer',
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.social.github, profile.social.linkedin],
+  knowsLanguage: ['pt-BR', 'en'],
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'University of Porto' }],
+  worksFor: { '@type': 'Organization', name: 'Envivent' },
+};
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: profile.name,
+  url: Astro.site?.toString(),
+  inLanguage: htmlLang[lang],
+};
+---
+
+<BaseLayout
+  title={t('meta.title')}
+  description={t('meta.description')}
+  lang={lang}
+  alternates={{ en: '/', pt: '/pt/' }}
+  jsonLd={[personSchema, siteSchema]}
+>
+  <Hero lang={lang} />
+  <Experience lang={lang} />
+  <Projects lang={lang} />
+  <LatestPosts lang={lang} />
+  <Contact lang={lang} />
+</BaseLayout>

@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { getTranslation, postLang, postUrl, readingTime, type Post } from '@/lib/blog';
+import { profile } from '@/data/profile';
+import { formatDate, htmlLang, localizePath, useTranslations } from '@/i18n/ui';
+
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const lang = postLang(post);
+const t = useTranslations(lang);
+const { Content } = await render(post);
+const translation = await getTranslation(post);
+const { title, description, pubDate, updatedDate, tags, cover, coverAlt } = post.data;
+
+const alternates = {
+  [lang]: postUrl(post),
+  ...(translation ? { [postLang(translation)]: postUrl(translation) } : {}),
+};
+// Without a translation, the language switch falls back to the other blog index
+const langLinks = { en: '/blog/', pt: '/pt/blog/', ...alternates };
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  inLanguage: htmlLang[lang],
+  author: { '@type': 'Person', name: profile.name, url: Astro.site?.toString() },
+  mainEntityOfPage: new URL(postUrl(post), Astro.site).toString(),
+  keywords: tags.join(', '),
+};
+---
+
+<BaseLayout
+  title={`${title} — ${profile.name}`}
+  description={description}
+  lang={lang}
+  alternates={alternates}
+  langLinks={langLinks}
+  image={cover}
+  type="article"
+  publishedTime={pubDate}
+  modifiedTime={updatedDate}
+  jsonLd={articleSchema}
+>
+  <article class="shell max-w-4xl pt-10 pb-20 sm:pt-16">
+    <a class="link-arrow text-sm" data-back href={localizePath('/blog/', lang)}><Icon name="arrowLeft" size={16} /> {t('blog.back')}</a>
+
+    <header class="my-10 grid gap-4">
+      <div class="flex flex-wrap gap-2 font-mono text-xs text-fg-subtle">
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate, lang)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{readingTime(post.body)} {t('blog.minRead')}</span>
+        {
+          updatedDate && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>
+                {t('blog.updated')} <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, lang)}</time>
+              </span>
+            </>
+          )
+        }
+      </div>
+      <h1 class="text-3xl leading-[1.08] tracking-[-0.035em] sm:text-4xl">{title}</h1>
+      <p class="text-xl text-fg-muted">{description}</p>
+      {
+        tags.length > 0 && (
+          <ul role="list" class="flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <li class="chip">#{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        translation && (
+          <a class="inline-flex items-center gap-1.5 justify-self-start text-sm text-accent hover:underline" href={postUrl(translation)} hreflang={postLang(translation)}>
+            <Icon name="globe" size={15} /> {t('blog.translation')}
+          </a>
+        )
+      }
+    </header>
+
+    {
+      cover && (
+        <Image
+          class="mb-10 w-full rounded-3xl border border-line"
+          src={cover}
+          alt={coverAlt ?? ''}
+          widths={[720, 1080, 1440]}
+          sizes="(max-width: 760px) 100vw, 720px"
+        />
+      )
+    }
+
+    <div class="prose max-w-none sm:prose-lg prose-headings:tracking-tight prose-a:underline-offset-3 prose-img:rounded-xl">
+      <Content />
+    </div>
+
+    <footer class="mt-16 border-t border-line pt-8">
+      <a class="link-arrow" data-back href={localizePath('/blog/', lang)}><Icon name="arrowLeft" size={16} /> {t('blog.back')}</a>
+    </footer>
+  </article>
+</BaseLayout>

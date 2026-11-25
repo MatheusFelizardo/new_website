@@ -1,0 +1,45 @@
+---
+import Icon from '@/components/Icon.astro';
+import { postUrl, readingTime, type Post } from '@/lib/blog';
+import { formatDate, useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  posts: Post[];
+  lang: Lang;
+}
+const { posts, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<ul role="list" class="divide-y divide-line border-y border-line">
+  {
+    posts.map((post) => (
+      <li class="reveal">
+        <a href={postUrl(post)} class="group relative grid gap-2 py-7 pr-12">
+          <div class="flex gap-2 font-mono text-xs text-fg-subtle">
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate, lang)}</time>
+            <span aria-hidden="true">·</span>
+            <span>
+              {readingTime(post.body)} {t('blog.minRead')}
+            </span>
+            {post.data.draft && <span class="text-accent">draft</span>}
+          </div>
+          <h3 class="text-xl transition-colors group-hover:text-accent sm:text-2xl">{post.data.title}</h3>
+          <p class="max-w-[70ch] text-fg-muted">{post.data.description}</p>
+          {post.data.tags.length > 0 && (
+            <ul role="list" class="mt-1 flex flex-wrap gap-1.5">
+              {post.data.tags.map((tag) => (
+                <li class="chip">#{tag}</li>
+              ))}
+            </ul>
+          )}
+          <Icon
+            name="arrowUpRight"
+            size={20}
+            class="absolute top-8 right-1 text-fg-subtle transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

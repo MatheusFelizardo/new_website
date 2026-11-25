@@ -1,0 +1,33 @@
+---
+import { languages, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+  alternates: Partial<Record<Lang, string>>;
+  label: string;
+}
+const { lang, alternates, label } = Astro.props;
+const langs = Object.keys(languages) as Lang[];
+---
+
+<nav aria-label={label} class="inline-flex rounded-full border border-line p-0.5 font-mono text-xs">
+  {
+    langs.map((l) =>
+      l === lang ? (
+        <span aria-current="true" lang={l} class="rounded-full bg-fg px-2.5 py-1 text-bg">
+          {l.toUpperCase()}
+        </span>
+      ) : (
+        <a
+          href={alternates[l] ?? (l === 'en' ? '/' : `/${l}/`)}
+          hreflang={l}
+          lang={l}
+          title={languages[l]}
+          class="rounded-full px-2.5 py-1 text-fg-muted transition-colors hover:text-fg"
+        >
+          {l.toUpperCase()}
+        </a>
+      ),
+    )
+  }
+</nav>

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { ui } from '@/i18n/ui';
+---
+
+<BaseLayout title={`404 — ${ui.en['404.title']}`} description={ui.en['404.text']} lang="en" alternates={{}} noindex>
+  <section class="shell py-24 text-center">
+    <p class="font-mono text-7xl leading-none font-bold tracking-[-0.05em] text-accent sm:text-9xl">404</p>
+    <h1 class="mt-4 text-3xl">{ui.en['404.title']}</h1>
+    <p class="mt-3 text-fg-muted">{ui.en['404.text']}</p>
+    <p class="mt-1 text-fg-muted" lang="pt-BR">{ui.pt['404.text']}</p>
+    <div class="mt-8 flex justify-center gap-3">
+      <a class="btn btn-primary" href="/"><Icon name="arrowLeft" size={16} /> Home</a>
+      <a class="btn" href="/pt/" lang="pt-BR">Início</a>
+    </div>
+  </section>
+</BaseLayout>

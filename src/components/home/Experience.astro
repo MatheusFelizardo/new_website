@@ -1,0 +1,80 @@
+---
+import { experience, education, skills } from '@/data/profile';
+import { useTranslations, htmlLang, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const fmt = (ym: string) =>
+  new Intl.DateTimeFormat(htmlLang[lang], { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(
+    new Date(`${ym}-01T00:00:00Z`),
+  );
+const card = 'reveal rounded-3xl border border-line bg-surface p-6';
+const cardTitle = 'mb-4 font-mono text-xs font-medium tracking-wider text-fg-subtle uppercase';
+---
+
+<section id="experience" class="py-10 sm:py-16">
+  <div class="shell grid gap-x-16 gap-y-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+    <header class="mb-6 lg:col-span-2">
+      <p class="kicker">// {t('experience.kicker')}</p>
+      <h2 class="section-title">{t('experience.title')}</h2>
+    </header>
+
+    <ol role="list" class="divide-y divide-line">
+      {
+        experience.map((job) => (
+          <li class="reveal grid gap-2 py-7 first:pt-0 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:gap-6">
+            <p class="pt-0.5 font-mono text-[0.8rem] text-fg-subtle">
+              <time datetime={job.start}>{fmt(job.start)}</time> —{' '}
+              {job.end ? (
+                <time datetime={job.end}>{fmt(job.end)}</time>
+              ) : (
+                <span class="text-accent">{t('experience.present')}</span>
+              )}
+            </p>
+            <div>
+              <h3 class="text-lg">
+                {job.role} <span class="font-medium text-fg-muted">@ {job.company}</span>
+              </h3>
+              <p class="mt-0.5 text-sm text-fg-subtle">{job.location[lang]}</p>
+              <p class="mt-3 mb-4 text-fg-muted">{job.description[lang]}</p>
+              <ul role="list" class="flex flex-wrap gap-1.5">
+                {job.stack.map((s) => (
+                  <li class="chip">{s}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="grid content-start gap-4">
+      <div class={card}>
+        <h3 class={cardTitle}>{t('education.title')}</h3>
+        <ul role="list" class="grid gap-4">
+          {
+            education.map((e) => (
+              <li>
+                <p class="font-semibold">{e.degree[lang]}</p>
+                <p class="text-sm text-fg-muted">
+                  {e.school} · {e.years}
+                </p>
+                {e.note && <p class="mt-1 text-sm text-fg-subtle">{e.note[lang]}</p>}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class={card}>
+        <h3 class={cardTitle}>{t('skills.title')}</h3>
+        <ul role="list" class="flex flex-wrap gap-1.5">
+          {skills.map((s) => <li class="chip">{s}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

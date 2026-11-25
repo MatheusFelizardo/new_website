@@ -1,0 +1,46 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { getProjects } from '@/lib/projects';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const { featured, others } = await getProjects();
+---
+
+<section id="projects" class="bg-linear-to-b from-transparent via-subtle to-transparent py-10 sm:py-16">
+  <div class="shell">
+    <header class="mb-10">
+      <p class="kicker">// {t('projects.kicker')}</p>
+      <h2 class="section-title">{t('projects.title')}</h2>
+    </header>
+
+    {
+      featured.length > 0 && (
+        <div class="grid gap-5 lg:grid-cols-2">
+          {featured.map((project) => (
+            <ProjectCard project={project} lang={lang} featured />
+          ))}
+        </div>
+      )
+    }
+
+    {
+      others.length > 0 && (
+        <>
+          <h3 class="mt-14 mb-5 font-mono text-xs font-medium tracking-wider text-fg-subtle uppercase">
+            {t('projects.more')}
+          </h3>
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {others.map((project) => (
+              <ProjectCard project={project} lang={lang} />
+            ))}
+          </div>
+        </>
+      )
+    }
+  </div>
+</section>

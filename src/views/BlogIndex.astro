@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostList from '@/components/blog/PostList.astro';
+import Icon from '@/components/Icon.astro';
+import { getPosts } from '@/lib/blog';
+import { profile } from '@/data/profile';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getPosts(lang);
+---
+
+<BaseLayout
+  title={`${t('blog.title')} — ${profile.name}`}
+  description={t('blog.description')}
+  lang={lang}
+  alternates={{ en: '/blog/', pt: '/pt/blog/' }}
+>
+  <section class="py-16 sm:py-24">
+    <div class="shell max-w-4xl">
+      <header class="mb-12">
+        <p class="kicker">// {t('blog.kicker')}</p>
+        <h1 class="mt-2 text-4xl tracking-[-0.04em] sm:text-6xl">{t('blog.title')}</h1>
+        <p class="mt-4 max-w-[55ch] text-lg text-fg-muted">{t('blog.description')}</p>
+        <a class="link-arrow mt-5 text-sm" href={localizePath('/rss.xml', lang)}><Icon name="rss" size={16} /> {t('blog.rss')}</a>
+      </header>
+      {
+        posts.length > 0 ? (
+          <PostList posts={posts} lang={lang} />
+        ) : (
+          <p class="border-t border-line py-12 text-fg-muted">{t('blog.empty')}</p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

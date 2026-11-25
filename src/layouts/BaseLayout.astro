@@ -1,0 +1,27 @@
+---
+import BaseHead, { type SeoProps } from '@/components/BaseHead.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { htmlLang, type Lang } from '@/i18n/ui';
+
+type Props = SeoProps & {
+  /** Targets for the language switch; defaults to `alternates` */
+  langLinks?: Partial<Record<Lang, string>>;
+};
+const { langLinks, ...props } = Astro.props;
+---
+
+<!doctype html>
+<html lang={htmlLang[props.lang]}>
+  <head>
+    <BaseHead {...props} />
+    <slot name="head" />
+  </head>
+  <body>
+    <Header lang={props.lang} alternates={langLinks ?? props.alternates} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={props.lang} />
+  </body>
+</html>

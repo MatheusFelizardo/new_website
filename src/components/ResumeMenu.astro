@@ -1,0 +1,66 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '@/data/profile';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+  variant?: 'compact' | 'primary' | 'default';
+  align?: 'left' | 'right';
+}
+const { lang, variant = 'compact', align = 'right' } = Astro.props;
+const t = useTranslations(lang);
+const order: Lang[] = lang === 'pt' ? ['pt', 'en'] : ['en', 'pt'];
+---
+
+<details class="resume group relative" data-resume>
+  <summary
+    class:list={[
+      'btn select-none',
+      variant === 'primary' && 'btn-primary',
+      variant === 'compact' && 'h-9 px-3.5 text-sm',
+    ]}
+  >
+    <Icon name="download" size={16} />
+    <span>{variant === 'primary' ? t('resume.download') : t('resume.label')}</span>
+    <Icon name="chevronDown" size={14} class="transition-transform group-open:rotate-180" />
+  </summary>
+  <ul
+    role="list"
+    class:list={[
+      'absolute top-[calc(100%+0.5rem)] z-30 min-w-52 rounded-2xl border border-line bg-surface p-1.5 text-left shadow-elevated',
+      align === 'right' ? 'right-0' : 'left-0',
+    ]}
+  >
+    {
+      order.map((l) => (
+        <li>
+          <a
+            href={profile.resume[l]}
+            download
+            hreflang={l === 'pt' ? 'pt-BR' : 'en'}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm text-fg transition-colors hover:bg-subtle"
+          >
+            <span class="rounded bg-accent-soft px-1.5 py-0.5 font-mono text-[0.7rem] text-accent">{l.toUpperCase()}</span>
+            {t(l === 'en' ? 'resume.en' : 'resume.pt')}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<script>
+  // Close open resume menus on outside click or Escape
+  const openMenus = () => document.querySelectorAll<HTMLDetailsElement>('details[data-resume][open]');
+  document.addEventListener('click', (e) => {
+    openMenus().forEach((d) => {
+      if (!d.contains(e.target as Node)) d.open = false;
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') openMenus().forEach((d) => (d.open = false));
+  });
+</script>

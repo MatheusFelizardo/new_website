@@ -1,0 +1,32 @@
+---
+import Icon from '@/components/Icon.astro';
+import PostList from '@/components/blog/PostList.astro';
+import { getPosts } from '@/lib/blog';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = (await getPosts(lang)).slice(0, 3);
+---
+
+{
+  posts.length > 0 && (
+    <section id="blog" class="py-10 sm:py-16">
+      <div class="shell">
+        <header class="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="kicker">// {t('blog.kicker')}</p>
+            <h2 class="section-title">{t('blog.latest')}</h2>
+          </div>
+          <a class="link-arrow" href={localizePath('/blog/', lang)}>
+            {t('blog.all')} <Icon name="arrowRight" size={16} />
+          </a>
+        </header>
+        <PostList posts={posts} lang={lang} />
+      </div>
+    </section>
+  )
+}
