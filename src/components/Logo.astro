@@ -1,0 +1,24 @@
+---
+/**
+ * MF monogram: the right leg of the M doubles as the stem of the F.
+ * Uses `currentColor` for the M and the accent token for the F arms,
+ * so it follows the light/dark theme automatically.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 32 32"
+  fill="none"
+  stroke-width="3.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  aria-hidden="true"
+>
+  <path d="M19 7h8M19 16h6" stroke="var(--accent)" />
+  <path d="M5 25V7l7 10 7-10v18" stroke="currentColor" />
+</svg>

@@ -1,0 +1,65 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
+import ResumeMenu from './ResumeMenu.astro';
+import Logo from './Logo.astro';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+  alternates: Partial<Record<Lang, string>>;
+}
+const { lang, alternates } = Astro.props;
+const t = useTranslations(lang);
+const home = localizePath('/', lang);
+const blog = localizePath('/blog/', lang);
+const onBlog = Astro.url.pathname.startsWith(blog);
+
+const links = [
+  { href: `${home}#experience`, label: t('nav.experience'), mobile: false },
+  { href: `${home}#projects`, label: t('nav.projects'), mobile: false },
+  { href: blog, label: t('nav.blog'), mobile: true, current: onBlog },
+];
+---
+
+<a
+  href="#main"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-fg focus:px-4 focus:py-2 focus:text-bg"
+>
+  {t('nav.skip')}
+</a>
+
+<header
+  class="sticky top-0 z-20 h-header border-b border-line bg-bg/75 backdrop-blur-md backdrop-saturate-150"
+  style="view-transition-name: site-header"
+>
+  <div class="shell flex h-full items-center gap-2 sm:gap-4">
+    <a href={home} class="inline-flex items-center gap-2.5 font-semibold tracking-tight" aria-label={`Matheus Felizardo — ${t('nav.home')}`}>
+      <Logo class="size-8 shrink-0" />
+      <span class="hidden md:inline">Matheus Felizardo</span>
+    </a>
+
+    <nav aria-label="Main" class="ml-auto flex gap-1">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            aria-current={l.current ? 'page' : undefined}
+            class:list={[
+              'rounded-full px-3 py-1.5 text-sm text-fg-muted transition-colors hover:bg-subtle hover:text-fg aria-[current=page]:bg-subtle aria-[current=page]:text-fg',
+              !l.mobile && 'hidden sm:inline-block',
+            ]}
+          >
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <LanguageSwitch lang={lang} alternates={alternates} label={t('lang.switch')} />
+      <ThemeToggle label={t('theme.toggle')} />
+      <div class="hidden sm:block"><ResumeMenu lang={lang} /></div>
+    </div>
+  </div>
+</header>

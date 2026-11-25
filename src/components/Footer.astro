@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '@/data/profile';
+import { useTranslations, localizePath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+const iconLink = 'grid size-9 place-items-center rounded-full transition-colors hover:bg-subtle hover:text-fg';
+---
+
+<footer class="border-t border-line py-8 text-sm text-fg-subtle">
+  <div class="shell flex flex-wrap items-center justify-between gap-4">
+    <p>© {year} {profile.name}.</p>
+    <ul role="list" class="flex gap-1">
+      <li><a class={iconLink} href={profile.social.github} target="_blank" rel="noopener me" aria-label="GitHub"><Icon name="github" /></a></li>
+      <li><a class={iconLink} href={profile.social.linkedin} target="_blank" rel="noopener me" aria-label="LinkedIn"><Icon name="linkedin" /></a></li>
+      <li><a class={iconLink} href={`mailto:${profile.email}`} aria-label="Email"><Icon name="mail" /></a></li>
+      <li><a class={iconLink} href={localizePath('/rss.xml', lang)} aria-label={t('blog.rss')}><Icon name="rss" /></a></li>
+    </ul>
+  </div>
+</footer>

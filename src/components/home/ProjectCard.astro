@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Icon from '@/components/Icon.astro';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  lang: Lang;
+  featured?: boolean;
+}
+const { project, lang, featured = false } = Astro.props;
+const p = project.data;
+const t = useTranslations(lang);
+const dialogId = `demo-${project.id}`;
+const thumb = ['overflow-hidden border-b border-line bg-subtle', featured ? 'aspect-[21/9]' : 'aspect-video'];
+const action =
+  'inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-fg-muted transition-colors hover:text-accent';
+---
+
+<article
+  class="group reveal flex flex-col overflow-hidden rounded-3xl border border-line bg-surface transition duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-elevated"
+>
+  {
+    p.image ? (
+      <div class:list={thumb}>
+        <Image
+          src={p.image}
+          alt=""
+          widths={featured ? [640, 900, 1280] : [400, 640, 900]}
+          sizes={featured ? "(max-width: 1024px) 100vw, 620px" : "(max-width: 700px) 100vw, 400px"}
+          loading="lazy"
+          class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
+    ) : (
+      <div
+        class:list={[thumb, 'grid place-items-center']}
+        style="background: radial-gradient(circle at 20% 20%, var(--glow), transparent 55%), radial-gradient(circle at 85% 90%, var(--accent-soft), transparent 50%), linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 24px, var(--subtle)"
+        aria-hidden="true"
+      >
+        <span class="font-mono text-2xl font-bold tracking-tight opacity-85 sm:text-4xl">{p.title}</span>
+      </div>
+    )
+  }
+
+  <div class="flex flex-1 flex-col gap-3.5 p-6">
+    <header class="flex items-baseline justify-between gap-4">
+      <h3 class:list={[featured ? 'text-2xl' : 'text-lg']}>{p.title}</h3>
+      <span class="font-mono text-xs text-fg-subtle">
+        {p.wip ? <span class="text-accent">{t('projects.wip')}</span> : p.year}
+      </span>
+    </header>
+    <p class:list={['text-fg-muted', featured ? 'text-base' : 'text-[0.95rem]']}>{p.summary[lang]}</p>
+    <ul role="list" class="flex flex-wrap gap-1.5">
+      {p.tags.map((tag) => <li class="chip">{tag}</li>)}
+    </ul>
+
+    {
+      (p.github || p.website || p.document || p.video) && (
+        <div class="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-2">
+          {p.video && (
+            <button type="button" class={action} data-open-dialog={dialogId}>
+              <Icon name="play" size={14} /> {t('projects.demo')}
+            </button>
+          )}
+          {p.website && (
+            <a class={action} href={p.website} target="_blank" rel="noopener">
+              <Icon name="globe" size={15} /> {t('projects.website')}
+            </a>
+          )}
+          {p.document && (
+            <a class={action} href={p.document.href} target="_blank" rel="noopener" download>
+              <Icon name="download" size={15} /> {p.document.label?.[lang] ?? t('projects.document')}
+            </a>
+          )}
+          {p.github && (
+            <a class={action} href={p.github} target="_blank" rel="noopener">
+              <Icon name="github" size={15} /> {t('projects.code')}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+
+  {
+    p.video && (
+      <dialog
+        id={dialogId}
+        aria-label={`${p.title} — ${t('projects.demo')}`}
+        class="m-auto w-[min(960px,calc(100vw-2rem))] overflow-hidden rounded-3xl border border-line bg-surface p-0 text-fg shadow-elevated backdrop:bg-black/60 backdrop:backdrop-blur-sm"
+      >
+        <div class="flex items-center justify-between border-b border-line py-2.5 pr-2.5 pl-5 font-semibold">
+          <span>{p.title}</span>
+          <form method="dialog">
+            <button
+              class="grid size-9 cursor-pointer place-items-center rounded-full transition-colors hover:bg-subtle"
+              aria-label={t('projects.close')}
+            >
+              <Icon name="close" />
+            </button>
+          </form>
+        </div>
+        <video controls playsinline preload="none" src={`/videos/${p.video}`} class="max-h-[75vh] w-full bg-black" />
+      </dialog>
+    )
+  }
+</article>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-open-dialog]').forEach((btn) => {
+    const dialog = document.getElementById(btn.dataset.openDialog!) as HTMLDialogElement | null;
+    if (!dialog) return;
+    const video = dialog.querySelector('video');
+    btn.addEventListener('click', () => {
+      dialog.showModal();
+      video?.play().catch(() => {});
+    });
+    // Clicking the backdrop closes the dialog
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', () => video?.pause());
+  });
+</script>

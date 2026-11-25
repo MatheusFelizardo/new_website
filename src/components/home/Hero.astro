@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '@/components/Icon.astro';
+import ResumeMenu from '@/components/ResumeMenu.astro';
+import photo from '@/assets/profile.webp';
+import { profile } from '@/data/profile';
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const metaLink = 'inline-flex items-center gap-1.5 transition-colors hover:text-fg';
+---
+
+<section class="relative overflow-clip pt-10 pb-10 sm:pt-18 sm:pb-18">
+  <div class="hero-bg absolute inset-0 -z-10" aria-hidden="true"></div>
+
+  <div class="shell grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16">
+    <div class="relative size-32 md:order-last md:size-[clamp(240px,28vw,360px)]">
+      <div class="absolute -inset-1.5 rotate-[4deg] rounded-[1.6rem] border border-dashed border-line-strong md:-inset-2.5 md:rounded-[2.25rem]" aria-hidden="true"></div>
+      <Image
+        src={photo}
+        alt="Matheus Felizardo"
+        width={420}
+        height={420}
+        loading="eager"
+        fetchpriority="high"
+        widths={[256, 420, 840]}
+        sizes="(max-width: 768px) 128px, 360px"
+        class="relative size-full rounded-[1.4rem] object-cover shadow-elevated md:rounded-[2rem]"
+      />
+    </div>
+
+    <div>
+      <p class="mb-3 font-mono text-[0.95rem] text-accent">{t('hero.greeting')}</p>
+      <h1 class="max-w-[16ch] text-3xl leading-[1.04] font-bold tracking-[-0.04em] sm:text-4xl lg:text-[3.25rem]">
+        {t('hero.title')}
+      </h1>
+      <p class="mt-6 max-w-[60ch] text-fg-muted sm:text-lg">{t('hero.lead')}</p>
+
+      <div class="mt-9 flex flex-wrap gap-3">
+        <ResumeMenu lang={lang} variant="primary" align="left" />
+        <a class="btn" href="#contact">{t('hero.contact')}</a>
+      </div>
+
+      <ul role="list" class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-fg-subtle">
+        <li class="inline-flex items-center gap-1.5"><Icon name="pin" size={16} /> {t('hero.location')}</li>
+        <li><a class={metaLink} href={profile.social.github} target="_blank" rel="noopener me"><Icon name="github" size={16} /> GitHub</a></li>
+        <li><a class={metaLink} href={profile.social.linkedin} target="_blank" rel="noopener me"><Icon name="linkedin" size={16} /> LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+</section>

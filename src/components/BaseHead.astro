@@ -1,0 +1,101 @@
+---
+import '@/styles/global.css';
+import { htmlLang, ogLocale, defaultLang, type Lang } from '@/i18n/ui';
+import { profile } from '@/data/profile';
+import defaultOg from '@/assets/profile.webp';
+import { getImage } from 'astro:assets';
+
+export interface SeoProps {
+  title: string;
+  description: string;
+  lang: Lang;
+  /** Root-relative URL of this page in each language */
+  alternates: Partial<Record<Lang, string>>;
+  image?: ImageMetadata;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  lang,
+  alternates,
+  image = defaultOg,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  jsonLd,
+  noindex = false,
+} = Astro.props as SeoProps;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = await getImage({ src: image, width: 1200, format: 'jpg' });
+const ogUrl = new URL(og.src, Astro.site);
+const alternateEntries = Object.entries(alternates) as [Lang, string][];
+const xDefault = alternates[defaultLang];
+const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content={profile.name} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex" />}
+
+{alternateEntries.map(([l, href]) => <link rel="alternate" hreflang={htmlLang[l]} href={new URL(href, Astro.site)} />)}
+{xDefault && <link rel="alternate" hreflang="x-default" href={new URL(xDefault, Astro.site)} />}
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${profile.name} — Blog`}
+  href={new URL(lang === 'en' ? '/rss.xml' : `/${lang}/rss.xml`, Astro.site)}
+/>
+<meta name="theme-color" content="#f8f9fb" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={profile.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogUrl} />
+<meta property="og:locale" content={ogLocale[lang]} />
+{
+  alternateEntries
+    .filter(([l]) => l !== lang)
+    .map(([l]) => <meta property="og:locale:alternate" content={ogLocale[l]} />)
+}
+{publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogUrl} />
+
+{schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+<!-- Apply theme before first paint to avoid a flash -->
+<script is:inline>
+  (function () {
+    var stored = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch (e) {}
+    var theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>

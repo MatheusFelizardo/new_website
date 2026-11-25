@@ -1,0 +1,211 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* Dark mode is driven by <html data-theme="dark"> (set before paint in BaseHead) */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ───────────── Theme tokens ───────────── */
+:root {
+  --bg: oklch(0.985 0.002 250);
+  --surface: oklch(1 0 0);
+  --subtle: oklch(0.96 0.004 250);
+  --fg: oklch(0.2 0.015 255);
+  --fg-muted: oklch(0.47 0.015 255);
+  --fg-subtle: oklch(0.6 0.012 255);
+  --line: oklch(0.91 0.006 255);
+  --line-strong: oklch(0.84 0.01 255);
+  --accent: oklch(0.58 0.17 245);
+  --accent-fg: oklch(0.99 0 0);
+  --accent-soft: oklch(0.58 0.17 245 / 0.1);
+  --glow: oklch(0.75 0.14 225 / 0.35);
+  --elevation: 0 1px 2px oklch(0.2 0.02 255 / 0.05), 0 8px 24px -12px oklch(0.2 0.02 255 / 0.12);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: oklch(0.16 0.01 255);
+  --surface: oklch(0.2 0.012 255);
+  --subtle: oklch(0.22 0.012 255);
+  --fg: oklch(0.96 0.004 255);
+  --fg-muted: oklch(0.74 0.012 255);
+  --fg-subtle: oklch(0.6 0.012 255);
+  --line: oklch(0.28 0.012 255);
+  --line-strong: oklch(0.36 0.014 255);
+  --accent: oklch(0.74 0.14 230);
+  --accent-fg: oklch(0.16 0.01 255);
+  --accent-soft: oklch(0.74 0.14 230 / 0.12);
+  --glow: oklch(0.6 0.16 240 / 0.28);
+  --elevation: 0 1px 2px oklch(0 0 0 / 0.3), 0 12px 32px -16px oklch(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-glow: var(--glow);
+
+  --shadow-elevated: var(--elevation);
+  --spacing-header: 4rem;
+}
+
+/* ───────────── Base ───────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply flex min-h-dvh flex-col bg-bg font-sans leading-relaxed text-fg antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold tracking-tight text-balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    @apply bg-accent text-accent-fg;
+  }
+  :focus-visible {
+    @apply rounded outline-2 outline-offset-3 outline-accent;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* ───────────── Small set of reusable components ───────────── */
+@utility shell {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-8;
+}
+
+@layer components {
+  .kicker {
+    @apply font-mono text-[0.8125rem] tracking-wide text-accent;
+  }
+  .section-title {
+    @apply mt-1.5 text-3xl sm:text-4xl;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-subtle px-2.5 py-0.5 font-mono text-xs whitespace-nowrap text-fg-muted;
+  }
+  .btn {
+    @apply inline-flex h-11 cursor-pointer items-center gap-2 rounded-full border border-line-strong bg-surface px-5 text-[0.9375rem] font-medium transition hover:border-fg-subtle active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply border-fg bg-fg text-bg hover:border-accent hover:bg-accent hover:text-accent-fg;
+  }
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 font-medium text-fg-muted transition-colors hover:text-accent;
+  }
+  .link-arrow svg {
+    @apply transition-transform;
+  }
+  .link-arrow:hover svg {
+    translate: 3px 0;
+  }
+  .link-arrow[data-back]:hover svg {
+    translate: -3px 0;
+  }
+}
+
+/* Hero dotted background with a soft glow */
+.hero-bg {
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, var(--glow), transparent 60%),
+    radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: auto, 22px 22px;
+  mask-image: linear-gradient(to bottom, black 40%, transparent);
+}
+
+/* Blog typography mapped to the theme tokens */
+.prose {
+  --tw-prose-body: color-mix(in oklch, var(--fg) 85%, var(--fg-muted));
+  --tw-prose-headings: var(--fg);
+  --tw-prose-lead: var(--fg-muted);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--fg-subtle);
+  --tw-prose-bullets: var(--fg-subtle);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--fg-muted);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--fg-subtle);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-code: inherit;
+  --tw-prose-pre-bg: var(--subtle);
+  --tw-prose-th-borders: var(--line-strong);
+  --tw-prose-td-borders: var(--line);
+}
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+  content: none;
+}
+.prose :where(code):not(:where(pre *)) {
+  @apply rounded-md border border-line bg-subtle px-1.5 py-0.5 font-normal;
+}
+.prose :where(pre) {
+  @apply rounded-xl border border-line;
+}
+
+/* Dual-theme syntax highlighting (Shiki) */
+[data-theme='dark'] .astro-code,
+[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Reveal-on-scroll — progressive enhancement, no JS */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 1.5rem;
+  }
+}
+
+/* Smooth cross-page transitions in supporting browsers */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
