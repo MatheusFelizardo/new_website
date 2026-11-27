@@ -179,8 +179,12 @@
 /* Reveal-on-scroll — progressive enhancement, no JS */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
+    /* Longhands on purpose: the minifier would otherwise fold animation-timeline
+       into the `animation` shorthand, which browsers reject as invalid. */
     .reveal {
-      animation: reveal linear both;
+      animation-name: reveal;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
       animation-timeline: view();
       animation-range: entry 0% entry 35%;
     }
